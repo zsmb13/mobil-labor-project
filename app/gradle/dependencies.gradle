@@ -1,5 +1,6 @@
 def dependencyVersions = [
 		'appcompatv7'       : '27.1.0',
+		'dagger'            : '2.15',
 		'recyclerview'      : '27.1.0',
 		'retrofit'          : '2.3.0',
 		'okhttp'            : '3.10.0',
@@ -20,6 +21,10 @@ dependencies {
 	// Android Support Lib Packages
 	implementation "com.android.support:appcompat-v7:$dependencyVersions.appcompatv7"
 	implementation "com.android.support:recyclerview-v7:$dependencyVersions.appcompatv7"
+
+	// DI
+	implementation "com.google.dagger:dagger:$dependencyVersions.dagger"
+	annotationProcessor "com.google.dagger:dagger-compiler:$dependencyVersions.dagger"
 
 	// Android Architecture Components
 
