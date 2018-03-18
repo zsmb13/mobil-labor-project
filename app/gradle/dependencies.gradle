@@ -23,8 +23,10 @@ dependencies {
 	implementation "com.android.support:recyclerview-v7:$dependencyVersions.appcompatv7"
 
 	// DI
+	// Dagger
 	implementation "com.google.dagger:dagger:$dependencyVersions.dagger"
 	annotationProcessor "com.google.dagger:dagger-compiler:$dependencyVersions.dagger"
+	annotationProcessor "com.google.dagger:dagger-android-processor:$dependencyVersions.dagger"
 
 	// Android Architecture Components
 
