@@ -4,7 +4,7 @@ def dependencyVersions = [
 		'recyclerview'      : '27.1.0',
 		'retrofit'          : '2.3.0',
 		'okhttp'            : '3.10.0',
-		'logginginterceptor': '3.11.0-SNAPSHOT',
+		'logginginterceptor': '3.10.0',
 		'gson'              : '2.8.2',
 		'viewmodel_livedata': '1.1.0',
 		'constraint_layout' : '1.0.2',
