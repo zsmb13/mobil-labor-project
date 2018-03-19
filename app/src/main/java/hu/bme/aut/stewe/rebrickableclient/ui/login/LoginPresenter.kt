@@ -1,15 +1,19 @@
 package hu.bme.aut.stewe.rebrickableclient.ui.login
 
-import hu.bme.aut.stewe.rebrickableclient.ui.Presenter
-import javax.inject.Inject
+import hu.bme.aut.stewe.rebrickableclient.ui.TaskPresenter
 
 
-class LoginPresenter : Presenter<LoginScreen>{
+class LoginPresenter : TaskPresenter<LoginScreen>() {
+    fun tryLogin() {
 
-    @Inject
-    lateinit var loginInteractor: LoginInteractor
+    }
 
-    constructor(){
+    private fun onLoginSuccess(token: String, setListCount:Int) {
+        // TODO Store the token
+        // TODO if(setListCount == 1)  screen?.navigateToSets() else screen?.navigateToSetLists()
+    }
 
+    private fun onLoginFailed(message: String){
+        // TODO = screen?.showErrorMessage(message)
     }
 }
