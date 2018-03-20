@@ -1,9 +1,15 @@
 package hu.bme.aut.stewe.rebrickableclient.ui.login
 
+import hu.bme.aut.stewe.rebrickableclient.network.swagger.api.UsersApi
 import hu.bme.aut.stewe.rebrickableclient.ui.TaskPresenter
+import javax.inject.Inject
 
 
-class LoginPresenter : TaskPresenter<LoginScreen>() {
+class LoginPresenter(
+        @Inject
+        var usersApi: UsersApi
+) : TaskPresenter<LoginScreen>() {
+
     fun tryLogin() {
 
     }
