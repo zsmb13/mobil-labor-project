@@ -14,11 +14,25 @@ class LoginActivity : AppCompatActivity(), LoginScreen {
         injector.inject(this)
     }
 
-    override fun showErrorMessage(message: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onStart() {
+        super.onStart()
+        presenter.attachScreen(this)
+    }
+
+    override fun onStop() {
+        presenter.detachScreen()
+        super.onStop()
+    }
+
+    override fun navigateToSets() {
+        TODO("not implemented")
     }
 
     override fun navigateToSetLists() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented")
+    }
+
+    override fun showErrorMessage(message: String) {
+        TODO("not implemented")
     }
 }
