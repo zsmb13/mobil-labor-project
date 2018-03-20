@@ -16,5 +16,6 @@
 			</intent-filter>
 		</activity>
 		<activity android:name=".ui.setlists.SetListsActivity" />
+		<activity android:name=".ui.sets.SetsActivity" />
 	</application>
 </manifest>
