@@ -24,4 +24,8 @@ android {
     }
 }
 
+androidExtensions {
+    experimental = true
+}
+
 apply from: './gradle/dependencies.gradle'
