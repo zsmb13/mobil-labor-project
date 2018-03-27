@@ -17,5 +17,6 @@
 		</activity>
 		<activity android:name=".ui.setlists.SetListsActivity" />
 		<activity android:name=".ui.sets.SetsActivity" />
-	</application>
+        <activity android:name=".ui.setdetails.SetDetailsActivity" />
+    </application>
 </manifest>
