@@ -15,5 +15,8 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-	</application>
+		<activity android:name=".ui.setlists.SetListsActivity" />
+		<activity android:name=".ui.sets.SetsActivity" />
+        <activity android:name=".ui.setdetails.SetDetailsActivity" />
+    </application>
 </manifest>
