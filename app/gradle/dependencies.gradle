@@ -1,108 +1,110 @@
 def dependencyVersions = [
 
-        // App dependencies
+		// App dependencies
 
-        'appcompatv7'        : '27.1.0',
-        'dagger'             : '2.15',
-        'recyclerview'       : '27.1.0',
-        'retrofit'           : '2.3.0',
-        'okhttp'             : '3.10.0',
-        'logginginterceptor' : '3.10.0',
-        'gson'               : '2.8.2',
-        'viewmodel_livedata' : '1.1.0',
-        'constraint_layout'  : '1.0.2',
-        'room'               : '1.0.0',
-        'paging'             : '1.0.0-alpha6',
-        'glide'              : '4.6.1',
-        'axolotl'            : '1.0.5',
+		'appcompatv7'        : '27.1.0',
+		'dagger'             : '2.15',
+		'recyclerview'       : '27.1.0',
+		'retrofit'           : '2.3.0',
+		'okhttp'             : '3.10.0',
+		'logginginterceptor' : '3.10.0',
+		'gson'               : '2.8.2',
+		'viewmodel_livedata' : '1.1.1',
+		'constraint_layout'  : '1.0.2',
+		'room'               : '1.0.0',
+		'paging'             : '1.0.0-alpha7',
+		'glide'              : '4.6.1',
+		'axolotl'            : '1.0.5',
+		'kotlinx_coroutines' : '0.22.5',
 
-        //Testing
+		//Testing
 
-        'junit'              : '4.12',
-        'roboelectric'       : '3.7.1',
-        'mockito'            : '2.15.0',
-        'support_annotations': '27.1.0',
-        'android_testrunner' : '1.0.1',
-        'espresso'           : '3.0.1'
+		'junit'              : '4.12',
+		'roboelectric'       : '3.7.1',
+		'mockito'            : '2.15.0',
+		'support_annotations': '27.1.0',
+		'android_testrunner' : '1.0.1',
+		'espresso'           : '3.0.1'
 ]
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
-    // Android Support Lib Packages
-    implementation "com.android.support:appcompat-v7:$dependencyVersions.appcompatv7"
-    implementation "com.android.support:recyclerview-v7:$dependencyVersions.appcompatv7"
-    compile "com.android.support:cardview-v7:$dependencyVersions.appcompatv7"
-    compile "com.android.support:design:$dependencyVersions.appcompatv7"
+	// Android Support Lib Packages
+	implementation "com.android.support:appcompat-v7:$dependencyVersions.appcompatv7"
+	implementation "com.android.support:recyclerview-v7:$dependencyVersions.appcompatv7"
+	implementation "com.android.support:cardview-v7:$dependencyVersions.appcompatv7"
+	implementation "com.android.support:design:$dependencyVersions.appcompatv7"
 
-    // DI
-    // Dagger
-    implementation "com.google.dagger:dagger:$dependencyVersions.dagger"
-    kapt "com.google.dagger:dagger-compiler:$dependencyVersions.dagger"
-    compileOnly 'javax.annotation:jsr250-api:1.0'
+	// DI
+	// Dagger
+	implementation "com.google.dagger:dagger:$dependencyVersions.dagger"
+	kapt "com.google.dagger:dagger-compiler:$dependencyVersions.dagger"
+	compileOnly 'javax.annotation:jsr250-api:1.0'
 
-    // Android Architecture Components
+	// Android Architecture Components
 
-    // ViewModel and LiveData
-    implementation "android.arch.lifecycle:extensions:$dependencyVersions.viewmodel_livedata"
-    kapt "android.arch.lifecycle:compiler:$dependencyVersions.viewmodel_livedata"
+	// ViewModel and LiveData
+	implementation "android.arch.lifecycle:extensions:$dependencyVersions.viewmodel_livedata"
+	kapt "android.arch.lifecycle:compiler:$dependencyVersions.viewmodel_livedata"
 
-    // UI
+	// UI
 
-    implementation "com.android.support.constraint:constraint-layout:$dependencyVersions.constraint_layout"
+	implementation "com.android.support.constraint:constraint-layout:$dependencyVersions.constraint_layout"
 
-    // Networking
-    implementation "com.squareup.retrofit2:retrofit:$dependencyVersions.retrofit"
-    implementation "com.squareup.retrofit2:converter-gson:$dependencyVersions.retrofit"
-    implementation "com.squareup.okhttp3:okhttp:$dependencyVersions.okhttp"
-    implementation "com.squareup.okhttp3:logging-interceptor:$dependencyVersions.logginginterceptor"
+	// Networking
+	implementation "com.squareup.retrofit2:retrofit:$dependencyVersions.retrofit"
+	implementation "com.squareup.retrofit2:converter-gson:$dependencyVersions.retrofit"
+	implementation "com.squareup.okhttp3:okhttp:$dependencyVersions.okhttp"
+	implementation "com.squareup.okhttp3:logging-interceptor:$dependencyVersions.logginginterceptor"
 
-    // Serialization
-    implementation "com.google.code.gson:gson:$dependencyVersions.gson"
+	// Serialization
+	implementation "com.google.code.gson:gson:$dependencyVersions.gson"
 
-    // Persistence
+	// Persistence
 
-    // Room
-    implementation "android.arch.persistence.room:runtime:$dependencyVersions.room"
-    kapt "android.arch.persistence.room:compiler:$dependencyVersions.room"
+	// Room
+	implementation "android.arch.persistence.room:runtime:$dependencyVersions.room"
+	kapt "android.arch.persistence.room:compiler:$dependencyVersions.room"
 
-    // Paging
-    implementation "android.arch.paging:runtime:$dependencyVersions.paging"
+	// Paging
+	implementation "android.arch.paging:runtime:$dependencyVersions.paging"
 
-    //Utils
-    implementation "com.github.bumptech.glide:glide:$dependencyVersions.glide"
-    implementation "com.github.AutSoft.AxoloTL:compiler-core:$dependencyVersions.axolotl"
-    implementation "com.github.AutSoft.AxoloTL:tasklib:$dependencyVersions.axolotl"
-    implementation "com.github.AutSoft.AxoloTL:tasklib-core:$dependencyVersions.axolotl"
-    implementation "com.github.AutSoft.AxoloTL:tasklib-stetho:$dependencyVersions.axolotl"
-    kapt "com.github.AutSoft.AxoloTL:taskcompiler:$dependencyVersions.axolotl"
+	//Utils
+	implementation "com.github.bumptech.glide:glide:$dependencyVersions.glide"
+	implementation "com.github.AutSoft.AxoloTL:compiler-core:$dependencyVersions.axolotl"
+	implementation "com.github.AutSoft.AxoloTL:tasklib:$dependencyVersions.axolotl"
+	implementation "com.github.AutSoft.AxoloTL:tasklib-core:$dependencyVersions.axolotl"
+	implementation "com.github.AutSoft.AxoloTL:tasklib-stetho:$dependencyVersions.axolotl"
+	kapt "com.github.AutSoft.AxoloTL:taskcompiler:$dependencyVersions.axolotl"
+	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$dependencyVersions.kotlinx_coroutines"
 
-    // Testing
+	// Testing
 
-    // Test helpers for LiveData
-    testImplementation "android.arch.core:core-testing:$dependencyVersions.viewmodel_livedata"
+	// Test helpers for LiveData
+	testImplementation "android.arch.core:core-testing:$dependencyVersions.viewmodel_livedata"
 
-    // Test helpers for Room
-    testImplementation "android.arch.persistence.room:testing:$dependencyVersions.room"
+	// Test helpers for Room
+	testImplementation "android.arch.persistence.room:testing:$dependencyVersions.room"
 
-    // AxoloTL testing
-    testImplementation "com.github.AutSoft.AxoloTL:tasklib-test:$dependencyVersions.axolotl"
+	// AxoloTL testing
+	testImplementation "com.github.AutSoft.AxoloTL:tasklib-test:$dependencyVersions.axolotl"
 
-    // Unit Test
-    testImplementation "junit:junit:$dependencyVersions.junit"
-    testImplementation "org.robolectric:robolectric:$dependencyVersions.roboelectric"
-    testImplementation "org.mockito:mockito-core:$dependencyVersions.mockito"
-    testImplementation "com.google.dagger:dagger:$dependencyVersions.dagger"
-    kaptTest "com.google.dagger:dagger-compiler:$dependencyVersions.mockito"
-    testCompileOnly "javax.annotation:jsr250-api:1.0"
+	// Unit Test
+	testImplementation "junit:junit:$dependencyVersions.junit"
+	testImplementation "org.robolectric:robolectric:$dependencyVersions.roboelectric"
+	testImplementation "org.mockito:mockito-core:$dependencyVersions.mockito"
+	testImplementation "com.google.dagger:dagger:$dependencyVersions.dagger"
+	kaptTest "com.google.dagger:dagger-compiler:$dependencyVersions.mockito"
+	testCompileOnly "javax.annotation:jsr250-api:1.0"
 
-    // Android Test - Espresso
-    androidTestImplementation "org.mockito:mockito-core:$dependencyVersions.mockito"
-    androidTestImplementation "com.android.support:support-annotations:$dependencyVersions.support_annotations"
-    androidTestImplementation "com.android.support.test:runner:$dependencyVersions.android_testrunner"
-    androidTestImplementation "com.android.support.test:rules:$dependencyVersions.android_testrunner"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$dependencyVersions.espresso"
-    androidTestImplementation "com.google.dagger:dagger:$dependencyVersions.dagger"
-    kaptAndroidTest "com.google.dagger:dagger-compiler:$dependencyVersions.dagger"
-    androidTestCompileOnly "javax.annotation:jsr250-api:1.0"
+	// Android Test - Espresso
+	androidTestImplementation "org.mockito:mockito-core:$dependencyVersions.mockito"
+	androidTestImplementation "com.android.support:support-annotations:$dependencyVersions.support_annotations"
+	androidTestImplementation "com.android.support.test:runner:$dependencyVersions.android_testrunner"
+	androidTestImplementation "com.android.support.test:rules:$dependencyVersions.android_testrunner"
+	androidTestImplementation "com.android.support.test.espresso:espresso-core:$dependencyVersions.espresso"
+	androidTestImplementation "com.google.dagger:dagger:$dependencyVersions.dagger"
+	kaptAndroidTest "com.google.dagger:dagger-compiler:$dependencyVersions.dagger"
+	androidTestCompileOnly "javax.annotation:jsr250-api:1.0"
 }
