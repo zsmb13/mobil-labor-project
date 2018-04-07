@@ -1,5 +1,6 @@
 package hu.bme.aut.stewe.rebrickableclient.network.swagger.api;
 
+import hu.bme.aut.stewe.rebrickableclient.network.swagger.dto.UserToken;
 import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
@@ -23,7 +24,7 @@ public interface UsersApi {
   
   @FormUrlEncoded
   @POST("api/v3/users/_token/")
-  Call<Void> usersTokenCreate(
+  Call<UserToken> usersTokenCreate(
           @Field("username") String username, @Field("password") String password
   );
 

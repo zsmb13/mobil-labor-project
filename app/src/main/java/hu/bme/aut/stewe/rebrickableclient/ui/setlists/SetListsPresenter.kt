@@ -2,20 +2,20 @@ package hu.bme.aut.stewe.rebrickableclient.ui.setlists
 
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.api.UsersApi
-import hu.bme.aut.stewe.rebrickableclient.ui.TaskPresenter
+import hu.bme.aut.stewe.rebrickableclient.ui.Presenter
 import javax.inject.Inject
 
 
-class SetListsPresenter(
-        @Inject
-        var usersApi: UsersApi
-) : TaskPresenter<SetListsScreen>() {
+class SetListsPresenter : Presenter<SetListsScreen>() {
+
+    @Inject
+    lateinit var usersApi: UsersApi
 
     init {
         injector.inject(this)
     }
 
-    fun getSetLists(){
+    fun getSetLists() {
         // TODO retrieve set lists from server or repository
         // TODO if set list count is 1
         //      screen?.navigateToSets(setListId: String)

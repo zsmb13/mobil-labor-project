@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import hu.bme.aut.stewe.rebrickableclient.ui.login.LoginPresenter
 import hu.bme.aut.stewe.rebrickableclient.ui.setdetails.SetDetailsPresenter
+import hu.bme.aut.stewe.rebrickableclient.ui.sets.SetsPresenter
 import javax.inject.Singleton
 
 @Module
@@ -20,4 +21,8 @@ class UIModule(var context: Context) {
     @Provides
     @Singleton
     fun provideSetDetailsPresenter() = SetDetailsPresenter()
+
+    @Provides
+    @Singleton
+    fun provideSetsPresenter() = SetsPresenter()
 }

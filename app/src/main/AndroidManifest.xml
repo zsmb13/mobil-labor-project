@@ -1,6 +1,8 @@
 <manifest package="hu.bme.aut.stewe.rebrickableclient"
 	xmlns:android="http://schemas.android.com/apk/res/android">
 
+	<uses-permission android:name="android.permission.INTERNET"/>
+
 	<application
 		android:name=".UnbrickableApplication"
 		android:allowBackup="true"

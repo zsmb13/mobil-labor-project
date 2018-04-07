@@ -72,12 +72,13 @@ dependencies {
 
 	//Utils
 	implementation "com.github.bumptech.glide:glide:$dependencyVersions.glide"
-	implementation "com.github.AutSoft.AxoloTL:compiler-core:$dependencyVersions.axolotl"
-	implementation "com.github.AutSoft.AxoloTL:tasklib:$dependencyVersions.axolotl"
-	implementation "com.github.AutSoft.AxoloTL:tasklib-core:$dependencyVersions.axolotl"
-	implementation "com.github.AutSoft.AxoloTL:tasklib-stetho:$dependencyVersions.axolotl"
-	kapt "com.github.AutSoft.AxoloTL:taskcompiler:$dependencyVersions.axolotl"
+//	implementation "com.github.AutSoft.AxoloTL:compiler-core:$dependencyVersions.axolotl"
+//	implementation "com.github.AutSoft.AxoloTL:tasklib:$dependencyVersions.axolotl"
+//	implementation "com.github.AutSoft.AxoloTL:tasklib-core:$dependencyVersions.axolotl"
+//	implementation "com.github.AutSoft.AxoloTL:tasklib-stetho:$dependencyVersions.axolotl"
+//	kapt "com.github.AutSoft.AxoloTL:taskcompiler:$dependencyVersions.axolotl"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$dependencyVersions.kotlinx_coroutines"
+	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$dependencyVersions.kotlinx_coroutines"
 
 	// Testing
 
@@ -88,7 +89,7 @@ dependencies {
 	testImplementation "android.arch.persistence.room:testing:$dependencyVersions.room"
 
 	// AxoloTL testing
-	testImplementation "com.github.AutSoft.AxoloTL:tasklib-test:$dependencyVersions.axolotl"
+	//testImplementation "com.github.AutSoft.AxoloTL:tasklib-test:$dependencyVersions.axolotl"
 
 	// Unit Test
 	testImplementation "junit:junit:$dependencyVersions.junit"

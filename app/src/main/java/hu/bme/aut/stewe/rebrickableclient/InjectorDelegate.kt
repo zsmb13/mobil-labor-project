@@ -15,7 +15,8 @@ object InjectorDelegate {
         if (component == null) {
             component = DaggerAppComponent
                     .builder()
-                    .uIModule(UIModule(context!!))
+                    .uiModule(UIModule(context!!))
+                    .rebrickableBaseUrl("https://rebrickable.com/")
                     .build()
         }
         return component!!
