@@ -2,12 +2,12 @@ package hu.bme.aut.stewe.rebrickableclient.ui.sets
 
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.support.v7.app.AppCompatActivity
 import hu.bme.aut.stewe.rebrickableclient.injector
+import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
 import javax.inject.Inject
 
 
-class SetsActivity : AppCompatActivity(), SetsScreen {
+class SetsActivity : BaseActivity(), SetsScreen {
     @Inject
     lateinit var presenter: SetsPresenter
 

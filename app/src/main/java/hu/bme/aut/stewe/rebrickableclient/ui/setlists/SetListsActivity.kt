@@ -2,11 +2,11 @@ package hu.bme.aut.stewe.rebrickableclient.ui.setlists
 
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.support.v7.app.AppCompatActivity
 import hu.bme.aut.stewe.rebrickableclient.injector
+import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
 
 
-class SetListsActivity : AppCompatActivity(), SetListsScreen {
+class SetListsActivity : BaseActivity(), SetListsScreen {
 
     lateinit var presenter: SetListsPresenter
 

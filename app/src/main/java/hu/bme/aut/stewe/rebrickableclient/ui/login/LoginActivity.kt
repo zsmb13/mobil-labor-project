@@ -1,11 +1,11 @@
 package hu.bme.aut.stewe.rebrickableclient.ui.login
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import hu.bme.aut.stewe.rebrickableclient.injector
+import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
 import javax.inject.Inject
 
-class LoginActivity : AppCompatActivity(), LoginScreen {
+class LoginActivity : BaseActivity(), LoginScreen {
     @Inject
     lateinit var presenter : LoginPresenter
 
