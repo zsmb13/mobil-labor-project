@@ -1,4 +1,4 @@
-package hu.bme.aut.stewe.rebrickableclient.ui.setlists
+package hu.bme.aut.stewe.rebrickableclient.ui.sets
 
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -7,10 +7,9 @@ import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
 import javax.inject.Inject
 
 
-class SetListsActivity : BaseActivity(), SetListsScreen {
-
+class SetsActivity : BaseActivity(), SetsScreen {
     @Inject
-    lateinit var presenter: SetListsPresenter
+    lateinit var presenter: SetsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
@@ -29,18 +28,18 @@ class SetListsActivity : BaseActivity(), SetListsScreen {
 
     override fun onResume() {
         super.onResume()
-        // TODO refresh setlists
+        // TODO refresh sets
     }
 
     override fun showErrorMessage(message: String) {
         TODO("not implemented")
     }
 
-    override fun showSetLists(setLists: List<Any>) {
+    override fun showSets(sets: List<Any>) {
         TODO("not implemented")
     }
 
-    override fun navigateToSets(setListId: String) {
+    override fun navigateToSetDetails(setId: String) {
         TODO("not implemented")
     }
 }

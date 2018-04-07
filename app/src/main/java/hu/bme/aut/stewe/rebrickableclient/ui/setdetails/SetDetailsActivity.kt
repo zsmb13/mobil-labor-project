@@ -1,13 +1,17 @@
-package hu.bme.aut.stewe.rebrickableclient.ui.login
+package hu.bme.aut.stewe.rebrickableclient.ui.setdetails
 
 import android.os.Bundle
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
 import javax.inject.Inject
 
-class LoginActivity : BaseActivity(), LoginScreen {
+class SetDetailsActivity : BaseActivity(), SetDetailsScreen {
+    override fun openSetDetailsPage(url: String) {
+        TODO("not implemented")
+    }
+
     @Inject
-    lateinit var presenter : LoginPresenter
+    lateinit var presenter: SetDetailsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,11 +28,12 @@ class LoginActivity : BaseActivity(), LoginScreen {
         super.onStop()
     }
 
-    override fun navigateToSets(setListId: String) {
-        TODO("not implemented")
+    override fun onResume() {
+        super.onResume()
+        // TODO refresh set details
     }
 
-    override fun navigateToSetLists() {
+    override fun showSetDetails(set: Any) {
         TODO("not implemented")
     }
 
