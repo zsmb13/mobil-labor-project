@@ -6,6 +6,10 @@ import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
 import javax.inject.Inject
 
 class SetDetailsActivity : BaseActivity(), SetDetailsScreen {
+    override fun openSetDetailsPage(url: String) {
+        TODO("not implemented")
+    }
+
     @Inject
     lateinit var presenter: SetDetailsPresenter
 
@@ -26,7 +30,7 @@ class SetDetailsActivity : BaseActivity(), SetDetailsScreen {
 
     override fun onResume() {
         super.onResume()
-        presenter.getSetDetails("")
+        // TODO refresh set details
     }
 
     override fun showSetDetails(set: Any) {
@@ -34,6 +38,6 @@ class SetDetailsActivity : BaseActivity(), SetDetailsScreen {
     }
 
     override fun showErrorMessage(message: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented")
     }
 }

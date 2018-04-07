@@ -24,7 +24,7 @@ class LoginActivity : BaseActivity(), LoginScreen {
         super.onStop()
     }
 
-    override fun navigateToSets() {
+    override fun navigateToSets(setListId: String) {
         TODO("not implemented")
     }
 

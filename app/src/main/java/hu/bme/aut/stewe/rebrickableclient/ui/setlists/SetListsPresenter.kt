@@ -1,10 +1,15 @@
 package hu.bme.aut.stewe.rebrickableclient.ui.setlists
 
 import hu.bme.aut.stewe.rebrickableclient.injector
+import hu.bme.aut.stewe.rebrickableclient.interactor.SetListsInteractor
 import hu.bme.aut.stewe.rebrickableclient.ui.Presenter
+import javax.inject.Inject
 
 
 class SetListsPresenter : Presenter<SetListsScreen>() {
+
+    @Inject
+    lateinit var setListsInteractor : SetListsInteractor
 
     init {
         injector.inject(this)
@@ -17,4 +22,8 @@ class SetListsPresenter : Presenter<SetListsScreen>() {
         // else
         //      screen?.showSetLists(result)
     }
+
+    private fun onFetchSetSuccessful(setLists: List<Any>) = screen?.showSetLists(setLists)
+
+    private fun onFetchFailed(message: String) = screen?.showErrorMessage(message)
 }

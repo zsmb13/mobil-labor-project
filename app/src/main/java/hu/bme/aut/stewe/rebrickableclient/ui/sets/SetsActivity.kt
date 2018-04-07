@@ -26,11 +26,20 @@ class SetsActivity : BaseActivity(), SetsScreen {
         super.onStop()
     }
 
+    override fun onResume() {
+        super.onResume()
+        // TODO refresh sets
+    }
+
     override fun showErrorMessage(message: String) {
         TODO("not implemented")
     }
 
     override fun showSets(sets: List<Any>) {
+        TODO("not implemented")
+    }
+
+    override fun navigateToSetDetails(setId: String) {
         TODO("not implemented")
     }
 }
