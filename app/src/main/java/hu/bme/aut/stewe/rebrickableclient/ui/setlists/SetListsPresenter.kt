@@ -1,15 +1,10 @@
 package hu.bme.aut.stewe.rebrickableclient.ui.setlists
 
 import hu.bme.aut.stewe.rebrickableclient.injector
-import hu.bme.aut.stewe.rebrickableclient.network.swagger.api.UsersApi
-import hu.bme.aut.stewe.rebrickableclient.ui.TaskPresenter
-import javax.inject.Inject
+import hu.bme.aut.stewe.rebrickableclient.ui.Presenter
 
 
-class SetListsPresenter(
-        @Inject
-        var usersApi: UsersApi
-) : TaskPresenter<SetListsScreen>() {
+class SetListsPresenter : Presenter<SetListsScreen>() {
 
     init {
         injector.inject(this)
