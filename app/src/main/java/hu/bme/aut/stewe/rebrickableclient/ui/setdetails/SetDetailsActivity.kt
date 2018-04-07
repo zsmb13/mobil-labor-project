@@ -1,11 +1,15 @@
 package hu.bme.aut.stewe.rebrickableclient.ui.setdetails
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import hu.bme.aut.stewe.rebrickableclient.injector
+import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
 import javax.inject.Inject
 
-class SetDetailsActivity : AppCompatActivity(), SetDetailsScreen {
+class SetDetailsActivity : BaseActivity(), SetDetailsScreen {
+    override fun openSetDetailsPage(url: String) {
+        TODO("not implemented")
+    }
+
     @Inject
     lateinit var presenter: SetDetailsPresenter
 
@@ -26,7 +30,7 @@ class SetDetailsActivity : AppCompatActivity(), SetDetailsScreen {
 
     override fun onResume() {
         super.onResume()
-        presenter.getSetDetails("")
+        // TODO refresh set details
     }
 
     override fun showSetDetails(set: Any) {
@@ -34,6 +38,6 @@ class SetDetailsActivity : AppCompatActivity(), SetDetailsScreen {
     }
 
     override fun showErrorMessage(message: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        TODO("not implemented")
     }
 }

@@ -1,25 +1,29 @@
 package hu.bme.aut.stewe.rebrickableclient.ui.login
 
-import hu.bme.aut.stewe.rebrickableclient.network.swagger.api.UsersApi
-import hu.bme.aut.stewe.rebrickableclient.ui.TaskPresenter
+import hu.bme.aut.stewe.rebrickableclient.injector
+import hu.bme.aut.stewe.rebrickableclient.interactor.LoginInteractor
+import hu.bme.aut.stewe.rebrickableclient.ui.Presenter
 import javax.inject.Inject
 
 
-class LoginPresenter(
-        @Inject
-        var usersApi: UsersApi
-) : TaskPresenter<LoginScreen>() {
+class LoginPresenter : Presenter<LoginScreen>() {
 
-    fun tryLogin() {
+    @Inject
+    lateinit var loginInteractor: LoginInteractor
 
+    init {
+        injector.inject(this)
     }
 
-    private fun onLoginSuccess(token: String, setListCount:Int) {
-        // TODO Store the token
-        // TODO if(setListCount == 1)  screen?.navigateToSets() else screen?.navigateToSetLists()
+    fun login(username: String, password: String) {
+        // TODO get user token
     }
 
-    private fun onLoginFailed(message: String){
+    private fun onLoginSuccess(setListCount: Int) {
+        // TODO navigate to setlists screen
+    }
+
+    private fun onLoginFailed(message: String) {
         // TODO = screen?.showErrorMessage(message)
     }
 }
