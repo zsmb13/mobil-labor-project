@@ -2,12 +2,14 @@ package hu.bme.aut.stewe.rebrickableclient.ui.setlists
 
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.support.v7.app.AppCompatActivity
 import hu.bme.aut.stewe.rebrickableclient.injector
+import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
+import javax.inject.Inject
 
 
-class SetListsActivity : AppCompatActivity(), SetListsScreen {
+class SetListsActivity : BaseActivity(), SetListsScreen {
 
+    @Inject
     lateinit var presenter: SetListsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
@@ -23,6 +25,11 @@ class SetListsActivity : AppCompatActivity(), SetListsScreen {
     override fun onStop() {
         presenter.detachScreen()
         super.onStop()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // TODO refresh setlists
     }
 
     override fun showErrorMessage(message: String) {
