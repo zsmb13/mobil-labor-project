@@ -88,7 +88,7 @@ dependencies {
     testImplementation "org.robolectric:robolectric:$dependencyVersions.roboelectric"
     testImplementation "org.mockito:mockito-core:$dependencyVersions.mockito"
     testImplementation "com.google.dagger:dagger:$dependencyVersions.dagger"
-    kaptTest "com.google.dagger:dagger-compiler:$dependencyVersions.mockito"
+    kaptTest "com.google.dagger:dagger-compiler:$dependencyVersions.dagger"
     testCompileOnly "javax.annotation:jsr250-api:1.0"
 
     // Android Test - Espresso
