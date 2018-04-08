@@ -15,15 +15,15 @@ import javax.inject.Singleton
 class NetworkModule {
     @Provides
     @Singleton
-    fun provideGson() = GsonBuilder().create()
+    fun provideGson(): Gson = GsonBuilder().create()
 
     @Provides
     @Singleton
-    fun provideOkHttpClient() = OkHttpClient.Builder().build()
+    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder().build()
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson) =
+    fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit =
             Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .client(okHttpClient)
@@ -31,9 +31,9 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideUsersApi(retrofit: Retrofit) = retrofit.create(UsersApi::class.java)
+    fun provideUsersApi(retrofit: Retrofit): UsersApi = retrofit.create(UsersApi::class.java)
 
     @Provides
     @Singleton
-    fun provideLegoApi(retrofit: Retrofit) = retrofit.create(LegoApi::class.java)
+    fun provideLegoApi(retrofit: Retrofit): LegoApi = retrofit.create(LegoApi::class.java)
 }
