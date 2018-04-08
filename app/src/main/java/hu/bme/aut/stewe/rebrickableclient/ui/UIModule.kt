@@ -41,7 +41,7 @@ class UIModule(var context: Context) {
 
     @Provides
     @Singleton
-    fun provideSetListssInteractor() = SetListsInteractor()
+    fun provideSetListsInteractor() = SetListsInteractor()
 
     @Provides
     @Singleton
