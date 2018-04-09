@@ -1,31 +1,24 @@
 package hu.bme.aut.stewe.rebrickableclient.network.swagger.model
 
-import java.util.Objects
-import io.swagger.annotations.ApiModel
-import io.swagger.annotations.ApiModelProperty
-
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 
-@ApiModel(description = "")
 class Theme {
 
     /**
      */
     @SerializedName("id")
-    @get:ApiModelProperty(value = "")
     var id: Long? = null
 
     /**
      */
     @SerializedName("parent_id")
-    @get:ApiModelProperty(value = "")
     var parentId: Long? = null
 
     /**
      */
     @SerializedName("name")
-    @get:ApiModelProperty(value = "")
     var name: String? = null
 
 

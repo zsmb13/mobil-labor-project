@@ -1,37 +1,29 @@
 package hu.bme.aut.stewe.rebrickableclient.network.swagger.model
 
-import java.util.Objects
-import io.swagger.annotations.ApiModel
-import io.swagger.annotations.ApiModelProperty
-
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 
-@ApiModel(description = "")
 class SetList {
 
     /**
      */
     @SerializedName("id")
-    @get:ApiModelProperty(value = "")
     var id: Long? = null
 
     /**
      */
     @SerializedName("is_buildable")
-    @get:ApiModelProperty(value = "")
     var isBuildable: Boolean? = null
 
     /**
      */
     @SerializedName("name")
-    @get:ApiModelProperty(value = "")
     var name: String? = null
 
     /**
      */
     @SerializedName("num_sets")
-    @get:ApiModelProperty(value = "")
     var numSets: Int? = null
 
 

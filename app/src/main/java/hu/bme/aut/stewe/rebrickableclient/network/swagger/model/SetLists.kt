@@ -1,39 +1,29 @@
 package hu.bme.aut.stewe.rebrickableclient.network.swagger.model
 
-import java.util.Objects
-import io.swagger.annotations.ApiModel
-import io.swagger.annotations.ApiModelProperty
-import io.swagger.client.model.SetList
-import java.util.ArrayList
-
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 
-@ApiModel(description = "")
 class SetLists {
 
     /**
      */
     @SerializedName("count")
-    @get:ApiModelProperty(value = "")
     var count: Long? = null
 
     /**
      */
     @SerializedName("next")
-    @get:ApiModelProperty(value = "")
     var next: String? = null
 
     /**
      */
     @SerializedName("previous")
-    @get:ApiModelProperty(value = "")
     var previous: String? = null
 
     /**
      */
     @SerializedName("results")
-    @get:ApiModelProperty(value = "")
     var results: List<SetList> = ArrayList()
 
 
