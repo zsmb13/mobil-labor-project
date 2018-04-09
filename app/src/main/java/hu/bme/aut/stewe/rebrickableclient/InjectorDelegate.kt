@@ -15,7 +15,8 @@ object InjectorDelegate {
         if (component == null) {
             component = DaggerAppComponent
                     .builder()
-                    .uIModule(UIModule(context!!))
+                    .uiModule(UIModule(context!!))
+                    .rebrickableApiKey(context?.getString(R.string.rebrickable_key)!!)
                     .build()
         }
         return component!!

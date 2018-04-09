@@ -9,7 +9,9 @@ import hu.bme.aut.stewe.rebrickableclient.network.swagger.api.UsersApi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Qualifier
 import javax.inject.Singleton
+import kotlin.annotation.AnnotationRetention.RUNTIME
 
 @Module
 class NetworkModule {
@@ -36,4 +38,8 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideLegoApi(retrofit: Retrofit): LegoApi = retrofit.create(LegoApi::class.java)
+
+    @Qualifier
+    @Retention(RUNTIME)
+    annotation class RebrickableApiKey
 }
