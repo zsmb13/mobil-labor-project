@@ -16,6 +16,7 @@ object InjectorDelegate {
             component = DaggerAppComponent
                     .builder()
                     .uiModule(UIModule(context!!))
+                    .rebrickableServiceBaseUrl(context?.getString(R.string.rebrickable_base_url)!!)
                     .rebrickableApiKey(context?.getString(R.string.rebrickable_key)!!)
                     .build()
         }

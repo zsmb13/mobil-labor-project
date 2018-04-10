@@ -25,10 +25,11 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit =
+    fun provideRetrofit(@RebrickableServiceBaseUrl baseUrl:String, okHttpClient: OkHttpClient, gson: Gson): Retrofit =
             Retrofit.Builder()
-                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .baseUrl(baseUrl)
                     .client(okHttpClient)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
                     .build()
 
     @Provides
@@ -40,6 +41,12 @@ class NetworkModule {
     fun provideLegoApi(retrofit: Retrofit): LegoApi = retrofit.create(LegoApi::class.java)
 
     @Qualifier
+    @MustBeDocumented
     @Retention(RUNTIME)
     annotation class RebrickableApiKey
+
+    @Qualifier
+    @MustBeDocumented
+    @Retention(RUNTIME)
+    annotation class RebrickableServiceBaseUrl
 }

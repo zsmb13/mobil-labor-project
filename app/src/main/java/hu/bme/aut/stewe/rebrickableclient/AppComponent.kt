@@ -9,6 +9,7 @@ import hu.bme.aut.stewe.rebrickableclient.interactor.SetsInteractor
 import hu.bme.aut.stewe.rebrickableclient.network.AuthInterceptor
 import hu.bme.aut.stewe.rebrickableclient.network.NetworkModule
 import hu.bme.aut.stewe.rebrickableclient.network.NetworkModule.RebrickableApiKey
+import hu.bme.aut.stewe.rebrickableclient.network.NetworkModule.RebrickableServiceBaseUrl
 import hu.bme.aut.stewe.rebrickableclient.ui.UIModule
 import hu.bme.aut.stewe.rebrickableclient.ui.login.LoginActivity
 import hu.bme.aut.stewe.rebrickableclient.ui.login.LoginPresenter
@@ -43,7 +44,9 @@ interface AppComponent {
         fun uiModule(uiModule: UIModule): Builder
 
         @BindsInstance
-        @RebrickableApiKey
-        fun rebrickableApiKey(apiKey: String): Builder
+        fun rebrickableApiKey(@RebrickableApiKey apiKey: String): Builder
+
+        @BindsInstance
+        fun rebrickableServiceBaseUrl(@RebrickableServiceBaseUrl baseUrl: String): Builder
     }
 }

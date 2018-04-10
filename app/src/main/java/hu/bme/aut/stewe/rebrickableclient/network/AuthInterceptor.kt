@@ -6,13 +6,12 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import javax.inject.Inject
 
-class AuthInterceptor : Interceptor {
+class AuthInterceptor @Inject constructor(
+        @RebrickableApiKey
+        private var apiKey: String
+) : Interceptor {
 
-    @Inject
-    @RebrickableApiKey
-    lateinit var apiKey: String
-
-    init{
+    init {
         injector.inject(this)
     }
 
