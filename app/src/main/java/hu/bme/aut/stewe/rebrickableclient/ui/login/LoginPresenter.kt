@@ -2,12 +2,12 @@ package hu.bme.aut.stewe.rebrickableclient.ui.login
 
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.interactor.LoginInteractor
+import hu.bme.aut.stewe.rebrickableclient.launchAsync
 import hu.bme.aut.stewe.rebrickableclient.network.NetworkException
 import hu.bme.aut.stewe.rebrickableclient.network.ServiceError
 import hu.bme.aut.stewe.rebrickableclient.network.Success
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.UserToken
 import hu.bme.aut.stewe.rebrickableclient.ui.Presenter
-import kotlinx.coroutines.experimental.runBlocking
 import javax.inject.Inject
 
 
@@ -20,7 +20,7 @@ class LoginPresenter : Presenter<LoginScreen>() {
         injector.inject(this)
     }
 
-    fun login(username: String, password: String) = runBlocking {
+    fun login(username: String, password: String) = launchAsync {
         val result = loginInteractor.getUserToken(username, password)
 
         when (result) {
