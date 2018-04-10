@@ -1,11 +1,13 @@
 package hu.bme.aut.stewe.rebrickableclient.network
 
-import hu.bme.aut.stewe.rebrickableclient.CoroutineContexts
-import kotlinx.coroutines.experimental.async
+import hu.bme.aut.stewe.rebrickableclient.asyncNetwork
+import kotlinx.coroutines.experimental.Deferred
 import retrofit2.Call
 import retrofit2.HttpException
 
-suspend fun <T> Call<T>.awaitResult(): Result<T> = async(CoroutineContexts.NETWORK) {
+suspend fun <T> Call<T>.awaitResult(): Result<T> = this.getResultAsync().await()
+
+suspend fun <T> Call<T>.getResultAsync() : Deferred<Result<T>> = asyncNetwork{
     try {
         val response = execute()
 
@@ -17,4 +19,4 @@ suspend fun <T> Call<T>.awaitResult(): Result<T> = async(CoroutineContexts.NETWO
     } catch (e: Throwable) {
         NetworkException<T>(e)
     }
-}.await()
+}
