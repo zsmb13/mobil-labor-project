@@ -16,8 +16,8 @@ object InjectorDelegate {
             component = DaggerAppComponent
                     .builder()
                     .uiModule(UIModule(context!!))
-                    .rebrickableServiceBaseUrl(context?.getString(R.string.rebrickable_base_url)!!)
-                    .rebrickableApiKey(context?.getString(R.string.rebrickable_key)!!)
+                    .rebrickableServiceBaseUrl(getRebrickableServiceBaseUrl())
+                    .rebrickableApiKey(getRebrickableApiKey())
                     .build()
         }
         return component!!
@@ -29,5 +29,9 @@ object InjectorDelegate {
 
     operator fun setValue(thisRef: Any?, property: KProperty<*>, value: AppComponent) {
     }
+
+    private fun getRebrickableServiceBaseUrl() = context?.getString(R.string.rebrickable_base_url)!!
+
+    private fun getRebrickableApiKey() = context?.getString(R.string.rebrickable_key)!!
 
 }
