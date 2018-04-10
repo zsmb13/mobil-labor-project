@@ -2,7 +2,12 @@ package hu.bme.aut.stewe.rebrickableclient.ui.login
 
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.interactor.LoginInteractor
+import hu.bme.aut.stewe.rebrickableclient.network.NetworkException
+import hu.bme.aut.stewe.rebrickableclient.network.ServiceError
+import hu.bme.aut.stewe.rebrickableclient.network.Success
+import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.UserToken
 import hu.bme.aut.stewe.rebrickableclient.ui.Presenter
+import kotlinx.coroutines.experimental.runBlocking
 import javax.inject.Inject
 
 
@@ -15,15 +20,24 @@ class LoginPresenter : Presenter<LoginScreen>() {
         injector.inject(this)
     }
 
-    fun login(username: String, password: String) {
-        // TODO get user token
+    fun login(username: String, password: String) = runBlocking {
+        val result = loginInteractor.getUserToken(username, password)
+
+        when (result) {
+            is Success -> onLoginSuccess(result)
+            is ServiceError -> screen?.showErrorMessage(result.error.message())
+            is NetworkException -> screen?.showErrorMessage(result.exception.message!!)
+        }
     }
 
-    private fun onLoginSuccess(setListCount: Int) {
-        // TODO navigate to setlists screen
-    }
+    private suspend fun onLoginSuccess(userTokenResult: Success<UserToken>) {
+        loginInteractor.storeToken(userTokenResult.value.userToken!!)
+        val setListResult = loginInteractor.getUserSetListCount()
 
-    private fun onLoginFailed(message: String) {
-        // TODO = screen?.showErrorMessage(message)
+        when (setListResult) {
+            is Success -> screen?.navigateToSetLists()
+            is ServiceError -> screen?.showErrorMessage(setListResult.error.message())
+            is NetworkException -> screen?.showErrorMessage(setListResult.exception.message!!)
+        }
     }
 }
