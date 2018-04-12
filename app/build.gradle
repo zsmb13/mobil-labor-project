@@ -28,4 +28,10 @@ androidExtensions {
     experimental = true
 }
 
+kotlin {
+	experimental {
+		coroutines "enable"
+	}
+}
+
 apply from: './gradle/dependencies.gradle'
