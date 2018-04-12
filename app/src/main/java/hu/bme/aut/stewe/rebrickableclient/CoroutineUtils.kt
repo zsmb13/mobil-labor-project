@@ -1,7 +1,6 @@
 package hu.bme.aut.stewe.rebrickableclient
 
-import kotlinx.coroutines.experimental.DefaultDispatcher
-import kotlinx.coroutines.experimental.newFixedThreadPoolContext
+import kotlinx.coroutines.experimental.*
 import kotlin.coroutines.experimental.CoroutineContext
 import kotlinx.coroutines.experimental.android.UI as AndroidUI
 
@@ -12,3 +11,10 @@ object CoroutineContexts {
     val NETWORK: CoroutineContext = newFixedThreadPoolContext(THREAD_COUNT, "networkIO")
     val UI: CoroutineContext = AndroidUI
 }
+
+fun launchAsync(block: suspend CoroutineScope.() -> Unit): Job =
+        launch(CoroutineContexts.UI) { block() }
+
+suspend fun <T> asyncNetwork(block: suspend CoroutineScope.() -> T): Deferred<T> =
+        async(CoroutineContexts.NETWORK) { block() }
+
