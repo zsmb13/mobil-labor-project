@@ -127,6 +127,655 @@ paths:
       responses:
         '200':
           description: ''
+          schema: 
+            $ref: "#/definitions/SetList"
+      operationId: users_setlists_read
+      parameters:
+        - type: "integer"
+          description: ""
+          in: "path"
+          name: list_id
+          required: true
+        - type: "string"
+          description: ""
+          in: "path"
+          name: user_token
+          required: true
+    put:
+      tags:
+        - users
+      description: Replace an existing Set List's details.
+      summary: Replace an existing Set List's details.
+      responses:
+        '200':
+          description: ''
+      operationId: users_setlists_update
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - type: "integer"
+          description: ""
+          in: "path"
+          name: list_id
+          required: true
+        - type: "string"
+          description: ""
+          in: "path"
+          name: user_token
+          required: true
+        - type: "string"
+          description: ""
+          in: formData
+          name: is_buildable
+          required: false
+        - type: "string"
+          description: ""
+          in: formData
+          name: name
+          required: true
+        - type: "integer"
+          description: ""
+          in: formData
+          name: num_sets
+          required: false
+    patch:
+      tags:
+        - users
+      description: Update an existing Set List's details.
+      summary: Update an existing Set List's details.
+      responses:
+        '200':
+          description: ''
+      operationId: users_setlists_partial_update
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - type: "integer"
+          description: ""
+          in: "path"
+          name: list_id
+          required: true
+        - type: "string"
+          description: ""
+          in: "path"
+          name: user_token
+          required: true
+        - type: "string"
+          description: ""
+          in: formData
+          name: is_buildable
+          required: false
+        - type: "string"
+          description: ""
+          in: formData
+          name: name
+          required: false
+        - type: "integer"
+          description: ""
+          in: formData
+          name: num_sets
+          required: false
+    delete:
+      tags:
+        - users
+      description: Delete a Set List and all it's Sets.
+      summary: Delete a Set List and all it's Sets.
+      responses:
+        '204':
+          description: ''
+      operationId: users_setlists_delete
+      parameters:
+        - type: "integer"
+          description: ""
+          in: "path"
+          name: list_id
+          required: true
+        - type: "string"
+          description: ""
+          in: "path"
+          name: user_token
+          required: true
+  '/users/{user_token}/setlists/{list_id}/sets/':
+    get:
+      tags:
+        - users
+      description: Get a list of all the Sets in a specific Set List.
+      summary: Get a list of all the Sets in a specific Set List.
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: "#/definitions/LegoSetsInSetList"
+      operationId: users_setlists_sets_list
+      parameters:
+        - type: "integer"
+          description: ""
+          in: "path"
+          name: list_id
+          required: true
+        - type: "string"
+          description: ""
+          in: "path"
+          name: user_token
+          required: true
+        - type: "integer"
+          description: ""
+          in: query
+          name: page
+          required: false
+        - type: "integer"
+          description: ""
+          in: query
+          name: page_size
+          required: false
+        - type: "string"
+          description: ""
+          in: query
+          name: ordering
+          required: false
+    post:
+      tags:
+        - users
+      description: >-
+        Add one or more Sets to the Set List. Existing Sets are unaffected.
+
+
+        ### Single Set
+
+        When adding a single Set, returns the successfully created Set (status
+        201) or details for why the Set could not
+
+        be added.
+
+        ### Multiple Sets
+
+        To add multiple Sets, POST a JSON list of them (using a Content-Type
+        header of 'application/json').
+
+        e.g:
+
+        `[{"set_num":"8043-1", "quantity": 1},
+
+        {"set_num":"8110-1", "quantity": 2, "include_spares": "False"}]`
+
+        Returns a list of successfully added Sets. If the Set already exists or
+        is unrecognised, it will be skipped.
+      summary: Add one or more Sets to the Set List. Existing Sets are unaffected.
+      responses:
+        '201':
+          description: ''
+      operationId: users_setlists_sets_create
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - type: "integer"
+          description: ""
+          in: "path"
+          name: list_id
+          required: true
+        - type: "string"
+          description: ""
+          in: "path"
+          name: user_token
+          required: true
+        - type: "string"
+          description: ""
+          in: formData
+          name: set_num
+          required: true
+        - type: "integer"
+          description: ""
+          in: formData
+          name: quantity
+          required: false
+        - type: "string"
+          description: ""
+          in: formData
+          name: include_spares
+          required: false
+  '/users/{user_token}/setlists/{list_id}/sets/{set_num}/':
+    get:
+      tags:
+        - users
+      description: Get details about a specific Set in the Set List.
+      summary: Get details about a specific Set in the Set List.
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: "#/definitions/LegoSet"
+      operationId: users_setlists_sets_read
+      parameters:
+        - type: "string"
+          description: ""
+          in: "path"
+          name: set_num
+          required: true
+        - type: "integer"
+          description: ""
+          in: "path"
+          name: list_id
+          required: true
+        - type: "string"
+          description: ""
+          in: "path"
+          name: user_token
+          required: true
+    put:
+      tags:
+        - users
+      description: Replace an existing Set's details in the Set List.
+      summary: Replace an existing Set's details in the Set List.
+      responses:
+        '200':
+          description: ''
+      operationId: users_setlists_sets_update
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - type: "string"
+          description: ""
+          in: "path"
+          name: set_num
+          required: true
+        - type: "string"
+          description: ""
+          in: "path"
+          name: list_id
+          required: true
+        - type: "string"
+          description: ""
+          in: "path"
+          name: user_token
+          required: true
+        - type: "string"
+          description: ""
+          in: formData
+          name: quantity
+          required: false
+        - type: "string"
+          description: ""
+          in: formData
+          name: include_spares
+          required: false
+    patch:
+      tags:
+        - users
+      description: Update an existing Set's details in the Set List.
+      summary: Update an existing Set's details in the Set List.
+      responses:
+        '200':
+          description: ''
+      operationId: users_setlists_sets_partial_update
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - type: "string"
+          description: ""
+          in: "path"
+          name: set_num
+          required: true
+        - type: "string"
+          description: ""
+          in: "path"
+          name: list_id
+          required: true
+        - type: "string"
+          description: ""
+          in: "path"
+          name: user_token
+          required: true
+        - type: "string"
+          description: ""
+          in: formData
+          name: quantity
+          required: false
+        - type: "string"
+          description: ""
+          in: formData
+          name: include_spares
+          required: false
+    delete:
+      tags:
+        - users
+      description: Delete a Set from the Set List.
+      summary: Delete a Set from the Set List.
+      responses:
+        '204':
+          description: ''
+      operationId: users_setlists_sets_delete
+      parameters:
+        - type: "string"
+          description: ""
+          in: "path"
+          name: set_num
+          required: true
+        - type: "string"
+          description: ""
+          in: "path"
+          name: list_id
+          required: true
+        - type: "string"
+          description: ""
+          in: "path"
+          name: user_token
+          required: true
+  '/users/{user_token}/sets/{set_num}/':
+    get:
+      tags:
+        - users
+      description: >-
+        Get details about a specific Set in the user's LEGO collection.
+
+
+        ### Set List logic
+
+        Because this merges sets found across all Set Lists the fields list_id
+        and include_spares may not be
+
+        accurate unless the Set actually only exists in a single Set List.
+      summary: Get details about a specific Set in the user's LEGO collection.
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: "#/definitions/LegoSet"
+      operationId: users_sets_read
+      parameters:
+        - type: "string"
+          description: ""
+          in: "path"
+          name: set_num
+          required: true
+        - type: "string"
+          description: ""
+          in: "path"
+          name: user_token
+          required: true
+    put:
+      tags:
+        - users
+      description: >-
+        Update an existing Set's quantity in all Set Lists. This PUT call is
+        different to others in that it will create
+
+        the Set if it doesn't already exist, and it will delete the Set if you
+        pass a quantity of 0.
+
+
+        ### Set List logic
+
+        * Default Set List = user's configured default import list or the first
+        alphabetically if none exist.
+
+        * Increasing quantity = add to Set in default Set List if it exists,
+        else add it there
+
+        * Decreasing quantity = remove from Set in default Set List first, then
+        from remaining lists until done
+      summary: >-
+        Update an existing Set's quantity in all Set Lists. This PUT call is
+        different to others in that it will create
+      responses:
+        '200':
+          description: ''
+      operationId: users_sets_update
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - type: "string"
+          description: ""
+          in: "path"
+          name: set_num
+          required: true
+        - type: "string"
+          description: ""
+          in: "path"
+          name: user_token
+          required: true
+        - type: "integer"
+          description: ""
+          in: formData
+          name: quantity
+          required: false
+    delete:
+      tags:
+        - users
+      description: Delete the Set from all the user's Set Lists.
+      summary: Delete the Set from all the user's Set Lists.
+      responses:
+        '204':
+          description: ''
+      operationId: users_sets_delete
+      parameters:
+        - type: "string"
+          description: ""
+          in: "path"
+          name: set_num
+          required: true
+        - type: "string"
+          description: ""
+          in: "path"
+          name: user_token
+          required: true
+definitions:
+  UserToken:
+    type: "object"
+    properties:
+      user_token:
+        type: "string"
+  SetLists:
+    type: "object"
+    properties:
+      count:
+        type: "integer"
+        format: "int64"
+      next:
+        type: "string"
+      previous:
+        type: "string"
+      results:
+        type: "array"
+        items: 
+          $ref: "#/definitions/SetList"
+  SetList:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      is_buildable:
+        type: "boolean"
+      name:
+        type: "string"
+      num_sets:
+        type: "integer"
+  LegoSetsInSetList:
+    type: "object"
+    properties:
+      count:
+        type: "integer"
+        format: "int64"
+      next:
+        type: "string"
+      previous:
+        type: "string"
+      results:
+        type: "array"
+        items:
+          $ref: "#/definitions/SetListLegoSet"
+  SetListLegoSet:
+    type: "object"
+    properties:
+      list_id:
+        type: "integer"
+        format: "int64"
+      quantity:
+        type: "integer"
+      include_spares:
+        type: "boolean"
+      set:
+        $ref: "#/definitions/LegoSet"
+  LegoSet:
+    type: "object"
+    properties:
+      set_num:
+        type: "string"
+      name:
+        type: "string"
+      year:
+        type: "integer"
+      theme_id:
+        type: "integer"
+        format: "int64"
+      num_parts:
+        type: "integer"
+      set_img_url:
+        type: "string"
+      set_url:
+        type: "string"
+      last_modified_dt:
+        type: "string"
+        format: "date-time"
+  Theme:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      parent_id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"swagger: '2.0'
+info:
+  title: ''
+  version: ''
+host: rebrickable.com
+basePath: "/api/v3"
+schemes:
+  - https
+paths:
+  '/lego/themes/{id}/':
+    get:
+      tags:
+        - lego
+      description: Return details for a specific Theme
+      summary: Return details for a specific Theme
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: "#/definitions/Theme"
+      operationId: lego_themes_read
+      parameters:
+        - type: "integer"
+          description: "ID of the theme"
+          in: "path"
+          name: id
+          required: true
+  '/users/_token/':
+    post:
+      tags:
+        - users
+      description: >-
+        Generate a User Token to be used for authorising user account actions in
+        subsequent calls. Username can be either
+
+        the actual username or the user's email address.
+      summary: >-
+        Generate a User Token to be used for authorising user account actions in
+        subsequent calls. Username can be either
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: "#/definitions/UserToken"
+      operationId: users__token_create
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - type: "string"
+          description: ""
+          in: "formData"
+          name: username
+          required: true
+        - type: "string"
+          description: ""
+          in: "formData"
+          name: password
+          required: true
+  '/users/{user_token}/setlists/':
+    get:
+      tags:
+        - users
+      description: Get a list of all the user's Set Lists.
+      summary: Get a list of all the user's Set Lists.
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: "#/definitions/SetLists"
+      operationId: "users_setlists_list"
+      parameters:
+        - type: "string"
+          description: ""
+          in: "path"
+          name: user_token
+          required: true
+        - type: "integer"
+          description: ""
+          in: query
+          name: page
+          required: false
+        - type: "integer"
+          description: ""
+          in: query
+          name: page_size
+          required: false
+    post:
+      tags:
+        - users
+      description: Add a new Set List.
+      summary: Add a new Set List.
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: "#/definitions/SetList"
+      operationId: users_setlists_create
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - type: "string"
+          description: ""
+          in: "path"
+          name: user_token
+          required: true
+        - type: "string"
+          description: ""
+          in: formData
+          name: is_buildable
+          required: false
+        - type: "string"
+          description: ""
+          in: formData
+          name: name
+          required: true
+        - type: "integer"
+          description: ""
+          in: formData
+          name: num_sets
+          required: false
+  '/users/{user_token}/setlists/{list_id}/':
+    get:
+      tags:
+        - users
+      description: Get details about a specific Set List.
+      summary: Get details about a specific Set List.
+      responses:
+        '200':
+          description: ''
           schema:
             $ref: "#/definitions/SetList"
       operationId: users_setlists_read

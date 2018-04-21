@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName
 
 
 data class Theme(
-
         @SerializedName("id")
         var id: Long? = null,
 

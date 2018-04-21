@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 import java.util.*
 
 
-data class SetsInSetList(
+data class LegoSetsInSetList(
         @SerializedName("count")
         var count: Long? = null,
 
@@ -15,5 +15,5 @@ data class SetsInSetList(
         var previous: String? = null,
 
         @SerializedName("results")
-        var results: List<SetListSet> = ArrayList()
+        var results: List<SetListLegoSet> = ArrayList()
 )
