@@ -129,14 +129,14 @@ interface UsersApi {
      * @param page
      * @param pageSize
      * @param ordering
-     * @return Call<SetsInSetList>
-    </SetsInSetList> */
+     * @return Call<LegoSetsInSetList>
+    </LegoSetsInSetList> */
 
     @GET("users/{user_token}/setlists/{list_id}/sets/")
     fun usersSetlistsSetsList(
             @Path("list_id") listId: Int?, @Path("user_token") userToken: String, @Query("page") page: Int?,
             @Query("page_size") pageSize: Int?, @Query("ordering") ordering: String
-    ): Call<SetsInSetList>
+    ): Call<LegoSetsInSetList>
 
 
     /**
@@ -164,13 +164,13 @@ interface UsersApi {
      * @param setNum
      * @param listId
      * @param userToken
-     * @return Call<SetListSet>
-    </SetListSet> */
+     * @return Call<LegoSet>
+    </LegoSet> */
 
     @GET("users/{user_token}/setlists/{list_id}/sets/{set_num}/")
     fun usersSetlistsSetsRead(
             @Path("set_num") setNum: String, @Path("list_id") listId: Int?, @Path("user_token") userToken: String
-    ): Call<SetListSet>
+    ): Call<LegoSet>
 
 
     /**
@@ -231,13 +231,13 @@ interface UsersApi {
      * Get details about a specific Set in the user&#39;s LEGO collection.\n\n### Set List logic\nBecause this merges sets found across all Set Lists the fields list_id and include_spares may not be\naccurate unless the Set actually only exists in a single Set List.
      * @param setNum
      * @param userToken
-     * @return Call<SetListSet>
-    </SetListSet> */
+     * @return Call<LegoSet>
+    </LegoSet> */
 
     @GET("users/{user_token}/sets/{set_num}/")
     fun usersSetsRead(
             @Path("set_num") setNum: String, @Path("user_token") userToken: String
-    ): Call<SetListSet>
+    ): Call<LegoSet>
 
 
     /**
