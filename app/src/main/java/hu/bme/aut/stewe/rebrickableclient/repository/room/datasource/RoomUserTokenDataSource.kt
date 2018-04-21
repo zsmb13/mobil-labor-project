@@ -1,7 +1,6 @@
 package hu.bme.aut.stewe.rebrickableclient.repository.room.datasource
 
-import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.UserToken
-import hu.bme.aut.stewe.rebrickableclient.repository.DataSource
+import hu.bme.aut.stewe.rebrickableclient.repository.datasource.UserTokenDataSource
 import hu.bme.aut.stewe.rebrickableclient.repository.room.RoomUnbrickableDatabase
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -9,28 +8,10 @@ import javax.inject.Singleton
 @Singleton
 class RoomUserTokenDataSource @Inject constructor(
         private var appDatabase: RoomUnbrickableDatabase
-) : DataSource<UserToken> {
-    override fun addItem(item: UserToken) {
-        TODO("not implemented")
-    }
+) : UserTokenDataSource {
+    override suspend fun getUserToken(): String = appDatabase.userTokenDao().getUserToken()
 
-    override fun addItems(items: List<UserToken>) {
-        TODO("not implemented")
-    }
+    override suspend fun saveUserToken(token: String) = appDatabase.userTokenDao().saveUserToken(token)
 
-    override fun updateItem(item: UserToken) {
-        TODO("not implemented")
-    }
-
-    override fun updateItems(item: List<UserToken>) {
-        TODO("not implemented")
-    }
-
-    override fun removeItem(item: UserToken) {
-        TODO("not implemented")
-    }
-
-    override fun removeAll() {
-        TODO("not implemented")
-    }
+    override suspend fun deleteUserToken() = appDatabase.userTokenDao().deleteUserToken()
 }

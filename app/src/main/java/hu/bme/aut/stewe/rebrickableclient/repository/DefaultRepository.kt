@@ -1,20 +1,19 @@
 package hu.bme.aut.stewe.rebrickableclient.repository
 
-import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.SetList
-import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.SetListLegoSet
-import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.UserToken
+import hu.bme.aut.stewe.rebrickableclient.repository.datasource.LegoSetDataSource
+import hu.bme.aut.stewe.rebrickableclient.repository.datasource.SetListDataSource
+import hu.bme.aut.stewe.rebrickableclient.repository.datasource.UserTokenDataSource
 import javax.inject.Inject
 
 
 class DefaultRepository @Inject constructor(
-        var userTokenData: DataSource<UserToken>,
-        var setListData: DataSource<SetList>,
-        var setsData: DataSource<SetListLegoSet>
+        private var userTokenData: UserTokenDataSource,
+        private var setListData: SetListDataSource,
+        private var legoSetsData: LegoSetDataSource
 ) : Repository {
+    override fun userTokenData(): UserTokenDataSource = userTokenData
 
-    override fun userTokenData(): DataSource<UserToken> = userTokenData
+    override fun setListData(): SetListDataSource = setListData
 
-    override fun setListData(): DataSource<SetList> = setListData
-
-    override fun setsData(): DataSource<SetListLegoSet> = setsData
+    override fun setsData(): LegoSetDataSource = legoSetsData
 }
