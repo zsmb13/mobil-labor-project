@@ -2,8 +2,7 @@ package hu.bme.aut.stewe.rebrickableclient.network.swagger.model
 
 import com.google.gson.annotations.SerializedName
 
-
-data class SetListSet(
+data class SetListLegoSet(
         @SerializedName("list_id")
         var listId: Long? = null,
 
@@ -14,5 +13,5 @@ data class SetListSet(
         var includeSpares: Boolean? = null,
 
         @SerializedName("set")
-        var set: Set<*>? = null
+        var set: LegoSet? = null
 )
