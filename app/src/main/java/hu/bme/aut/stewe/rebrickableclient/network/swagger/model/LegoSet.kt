@@ -9,7 +9,7 @@ import java.util.*
 data class LegoSet(
         @SerializedName("set_num")
         @PrimaryKey
-        var setNum: String? = null,
+        var setNum: String,
 
         @SerializedName("name")
         var name: String? = null,

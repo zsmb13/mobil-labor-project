@@ -15,5 +15,5 @@ class DefaultRepository @Inject constructor(
 
     override fun setListData(): SetListDataSource = setListData
 
-    override fun setsData(): LegoSetDataSource = legoSetsData
+    override fun legoSetsData(): LegoSetDataSource = legoSetsData
 }

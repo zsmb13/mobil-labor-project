@@ -1,16 +1,22 @@
 package hu.bme.aut.stewe.rebrickableclient.repository.room.dao
 
 import android.arch.persistence.room.Dao
+import android.arch.persistence.room.Insert
 import android.arch.persistence.room.Query
+import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.UserToken
 
 @Dao
-interface UserTokenDao {
+abstract class UserTokenDao {
     @Query("SELECT userToken FROM UserToken WHERE id = 1")
-    fun getUserToken(): String
+    abstract fun getUserToken(): String
 
-    @Query("INSERT INTO UserToken VALUES (1,(:token))")
-    fun saveUserToken(token: String)
+    @Insert
+    abstract fun saveUserToken(userToken: UserToken)
 
     @Query("DELETE FROM UserToken WHERE id=1")
-    fun deleteUserToken()
+    abstract fun deleteUserToken()
+
+    fun saveUserToken(token: String) {
+        saveUserToken(UserToken(1, token))
+    }
 }
