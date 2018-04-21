@@ -1,9 +1,17 @@
-package hu.bme.aut.stewe.rebrickableclient.repository.room
+package hu.bme.aut.stewe.rebrickableclient.repository.room.datasource
 
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.SetList
 import hu.bme.aut.stewe.rebrickableclient.repository.DataSource
+import hu.bme.aut.stewe.rebrickableclient.repository.room.RoomUnbrickableDatabase
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class SetListData : DataSource<SetList> {
+@Singleton
+class RoomSetListDataSource @Inject constructor(
+        private var appDatabase: RoomUnbrickableDatabase
+) : DataSource<SetList> {
+
+
     override fun addItem(item: SetList) {
         TODO("not implemented")
     }

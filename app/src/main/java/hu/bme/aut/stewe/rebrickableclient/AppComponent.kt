@@ -10,6 +10,7 @@ import hu.bme.aut.stewe.rebrickableclient.network.AuthInterceptor
 import hu.bme.aut.stewe.rebrickableclient.network.NetworkModule
 import hu.bme.aut.stewe.rebrickableclient.network.NetworkModule.RebrickableApiKey
 import hu.bme.aut.stewe.rebrickableclient.network.NetworkModule.RebrickableServiceBaseUrl
+import hu.bme.aut.stewe.rebrickableclient.repository.RepositoryModule
 import hu.bme.aut.stewe.rebrickableclient.ui.UIModule
 import hu.bme.aut.stewe.rebrickableclient.ui.login.LoginActivity
 import hu.bme.aut.stewe.rebrickableclient.ui.login.LoginPresenter
@@ -22,7 +23,7 @@ import hu.bme.aut.stewe.rebrickableclient.ui.sets.SetsPresenter
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [UIModule::class, NetworkModule::class])
+@Component(modules = [UIModule::class, NetworkModule::class, RepositoryModule::class])
 interface AppComponent {
     fun inject(loginActivity: LoginActivity)
     fun inject(setListsPresenter: SetListsPresenter)
@@ -42,6 +43,7 @@ interface AppComponent {
     interface Builder {
         fun build(): AppComponent
         fun uiModule(uiModule: UIModule): Builder
+        fun repositoryModule(repositoryModule: RepositoryModule): Builder
 
         @BindsInstance
         fun rebrickableApiKey(@RebrickableApiKey apiKey: String): Builder
