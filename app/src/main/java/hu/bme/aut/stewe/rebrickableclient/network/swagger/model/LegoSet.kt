@@ -1,10 +1,14 @@
 package hu.bme.aut.stewe.rebrickableclient.network.swagger.model
 
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
+@Entity
 data class LegoSet(
         @SerializedName("set_num")
+        @PrimaryKey
         var setNum: String? = null,
 
         @SerializedName("name")

@@ -1,11 +1,13 @@
 package hu.bme.aut.stewe.rebrickableclient.network.swagger.model
 
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-
+@Entity
 class SetList {
-
     @SerializedName("id")
+    @PrimaryKey
     var id: Long? = null
 
     @SerializedName("is_buildable")
@@ -16,5 +18,4 @@ class SetList {
 
     @SerializedName("num_sets")
     var numSets: Int? = null
-
 }
