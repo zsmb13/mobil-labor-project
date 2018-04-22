@@ -2,10 +2,7 @@ package hu.bme.aut.stewe.rebrickableclient
 
 import dagger.BindsInstance
 import dagger.Component
-import hu.bme.aut.stewe.rebrickableclient.interactor.LoginInteractor
-import hu.bme.aut.stewe.rebrickableclient.interactor.SetDetailsInteractor
-import hu.bme.aut.stewe.rebrickableclient.interactor.SetListsInteractor
-import hu.bme.aut.stewe.rebrickableclient.interactor.SetsInteractor
+import hu.bme.aut.stewe.rebrickableclient.interactor.*
 import hu.bme.aut.stewe.rebrickableclient.network.AuthInterceptor
 import hu.bme.aut.stewe.rebrickableclient.network.NetworkModule
 import hu.bme.aut.stewe.rebrickableclient.network.NetworkModule.RebrickableApiKey
@@ -38,6 +35,7 @@ interface AppComponent {
     fun inject(setListsInteractor: SetListsInteractor)
     fun inject(setsInteractor: SetsInteractor)
     fun inject(authInterceptor: AuthInterceptor)
+    fun inject(interactor: Interactor)
 
     @Component.Builder
     interface Builder {
