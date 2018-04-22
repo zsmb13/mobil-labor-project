@@ -1,12 +1,8 @@
 package hu.bme.aut.stewe.rebrickableclient.ui.login
 
 import hu.bme.aut.stewe.rebrickableclient.injector
-import hu.bme.aut.stewe.rebrickableclient.interactor.LoginInteractor
+import hu.bme.aut.stewe.rebrickableclient.interactor.*
 import hu.bme.aut.stewe.rebrickableclient.launchAsync
-import hu.bme.aut.stewe.rebrickableclient.network.NetworkException
-import hu.bme.aut.stewe.rebrickableclient.network.ServiceError
-import hu.bme.aut.stewe.rebrickableclient.network.Success
-import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.UserToken
 import hu.bme.aut.stewe.rebrickableclient.ui.Presenter
 import javax.inject.Inject
 
@@ -24,20 +20,10 @@ class LoginPresenter : Presenter<LoginScreen>() {
         val result = loginInteractor.getUserToken(username, password)
 
         when (result) {
-            is Success -> onLoginSuccess(result)
+            is Success -> screen?.navigateToSetLists()
             is ServiceError -> screen?.showErrorMessage(result.error.message())
             is NetworkException -> screen?.showErrorMessage(result.exception.message!!)
-        }
-    }
-
-    private suspend fun onLoginSuccess(userTokenResult: Success<UserToken>) {
-        loginInteractor.storeToken(userTokenResult.value.userToken!!)
-        val setListResult = loginInteractor.getUserSetListCount()
-
-        when (setListResult) {
-            is Success -> screen?.navigateToSetLists()
-            is ServiceError -> screen?.showErrorMessage(setListResult.error.message())
-            is NetworkException -> screen?.showErrorMessage(setListResult.exception.message!!)
+            is DataSourceException -> screen?.showErrorMessage(result.exception.message!!)
         }
     }
 }

@@ -3,30 +3,33 @@ package hu.bme.aut.stewe.rebrickableclient.interactor
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.network.awaitResult
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.api.UsersApi
+import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.UserToken
 import javax.inject.Inject
 
 
-class LoginInteractor {
+class LoginInteractor : Interactor() {
 
     @Inject
     lateinit var usersApi: UsersApi
-
-    var userToken: String? = null
 
     init {
         injector.inject(this)
     }
 
-    suspend fun getUserToken(username: String, password: String) =
-            usersApi.usersTokenCreate(username, password).awaitResult()
-
-
-    suspend fun getUserSetListCount() =
-            usersApi.usersSetlistsList(userToken!!, 0, Integer.MAX_VALUE).awaitResult()
-
-    suspend fun storeToken(token: String) {
-        userToken = token
+    suspend fun getUserToken(username: String, password: String): Result<UserToken> {
+        val storedToken = getUserTokenFromRepository()
+        return if (storedToken == null) {
+            val result = usersApi.usersTokenCreate(username, password).awaitResult()
+            if (result is Success) {
+                saveUserToken(result.value.userToken!!)
+            }
+            result
+        } else {
+            Success(UserToken(userToken = storedToken))
+        }
     }
 
-    private suspend fun getUserToken() = userToken
+    private suspend fun saveUserToken(token: String) {
+        repository.userTokenData().saveUserToken(token)
+    }
 }

@@ -8,7 +8,7 @@ import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.UserToken
 @Dao
 abstract class UserTokenDao {
     @Query("SELECT userToken FROM UserToken WHERE id = 1")
-    abstract fun getUserToken(): String
+    abstract fun getUserToken(): String?
 
     @Insert
     abstract fun saveUserToken(userToken: UserToken)

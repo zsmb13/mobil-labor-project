@@ -1,4 +1,4 @@
-package hu.bme.aut.stewe.rebrickableclient.network
+package hu.bme.aut.stewe.rebrickableclient.interactor
 
 import retrofit2.HttpException
 
@@ -16,3 +16,9 @@ class ServiceError<T>(
 class NetworkException<T>(
         val exception: Throwable
 ) : Result<T>()
+
+class DataSourceException<T>(
+        val exception: Throwable
+) : Result<T>()
+
+class UserNotLoggedInException<T> : Result<T>()
