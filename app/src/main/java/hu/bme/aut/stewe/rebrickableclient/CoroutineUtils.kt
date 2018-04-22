@@ -18,3 +18,6 @@ fun launchAsync(block: suspend CoroutineScope.() -> Unit): Job =
 suspend fun <T> asyncNetwork(block: suspend CoroutineScope.() -> T): Deferred<T> =
         async(CoroutineContexts.NETWORK) { block() }
 
+suspend fun <T> asyncRepository(block: suspend CoroutineScope.() -> T): Deferred<T> =
+        async(CoroutineContexts.IO) { block() }
+
