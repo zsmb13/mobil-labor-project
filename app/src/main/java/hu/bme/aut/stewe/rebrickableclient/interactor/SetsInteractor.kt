@@ -2,18 +2,19 @@ package hu.bme.aut.stewe.rebrickableclient.interactor
 
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.network.awaitResult
-import hu.bme.aut.stewe.rebrickableclient.network.swagger.api.LegoApi
-import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.Theme
+import hu.bme.aut.stewe.rebrickableclient.network.swagger.api.UsersApi
+import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.LegoSetsInSetList
 import javax.inject.Inject
 
 class SetsInteractor : Interactor() {
     @Inject
-    lateinit var legoApi: LegoApi
+    lateinit var usersApi: UsersApi
 
     init {
         injector.inject(this)
     }
 
-    suspend fun getThemeInfo(id: Long): Result<Theme> =
-            legoApi.legoThemesRead(id).awaitResult()
+    suspend fun getLegoSets(setListId: Long): Result<LegoSetsInSetList> = runWithTokenCheck { token ->
+        usersApi.usersSetlistsSetsList(setListId, token, 0, Int.MAX_VALUE, "asc").awaitResult()
+    }
 }

@@ -3,6 +3,7 @@ package hu.bme.aut.stewe.rebrickableclient.ui.sets
 import android.os.Bundle
 import android.os.PersistableBundle
 import hu.bme.aut.stewe.rebrickableclient.injector
+import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.LegoSet
 import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
 import javax.inject.Inject
 
@@ -35,7 +36,7 @@ class SetsActivity : BaseActivity(), SetsScreen {
         TODO("not implemented")
     }
 
-    override fun showSets(sets: List<Any>) {
+    override fun showSets(sets: List<LegoSet>) {
         TODO("not implemented")
     }
 

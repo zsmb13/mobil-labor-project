@@ -40,7 +40,7 @@ class SetListsActivity : BaseActivity(), SetListsScreen {
         TODO("not implemented")
     }
 
-    override fun navigateToSets(setListId: String) {
+    override fun navigateToSets(setListId: Long) {
         TODO("not implemented")
     }
 }
