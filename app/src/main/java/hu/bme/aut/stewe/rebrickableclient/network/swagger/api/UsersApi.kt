@@ -134,7 +134,7 @@ interface UsersApi {
 
     @GET("users/{user_token}/setlists/{list_id}/sets/")
     fun usersSetlistsSetsList(
-            @Path("list_id") listId: Int?, @Path("user_token") userToken: String, @Query("page") page: Int?,
+            @Path("list_id") listId: Long?, @Path("user_token") userToken: String, @Query("page") page: Int?,
             @Query("page_size") pageSize: Int?, @Query("ordering") ordering: String
     ): Call<LegoSetsInSetList>
 
@@ -153,7 +153,7 @@ interface UsersApi {
     @FormUrlEncoded
     @POST("users/{user_token}/setlists/{list_id}/sets/")
     fun usersSetlistsSetsCreate(
-            @Path("list_id") listId: Int?, @Path("user_token") userToken: String, @Field("set_num") setNum: String,
+            @Path("list_id") listId: Long?, @Path("user_token") userToken: String, @Field("set_num") setNum: String,
             @Field("quantity") quantity: Int?, @Field("include_spares") includeSpares: String
     ): Call<Void>
 

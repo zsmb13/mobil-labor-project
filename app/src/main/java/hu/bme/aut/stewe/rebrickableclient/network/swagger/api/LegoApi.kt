@@ -17,7 +17,7 @@ interface LegoApi {
 
     @GET("lego/themes/{id}/")
     fun legoThemesRead(
-            @Path("id") id: Int?
+            @Path("id") id: Long?
     ): Call<Theme>
 
 
