@@ -7,6 +7,8 @@ import dagger.Provides
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.api.LegoApi
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.api.UsersApi
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.logging.HttpLoggingInterceptor.Level.BASIC
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Qualifier
@@ -21,11 +23,23 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder().build()
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = BASIC
+        return interceptor
+    }
 
     @Provides
     @Singleton
-    fun provideRetrofit(@RebrickableServiceBaseUrl baseUrl:String, okHttpClient: OkHttpClient, gson: Gson): Retrofit =
+    fun provideOkHttpClient(authInterceptor: AuthInterceptor, loggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
+            OkHttpClient.Builder()
+                    .addInterceptor(authInterceptor)
+                    .addInterceptor(loggingInterceptor)
+                    .build()
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(@RebrickableServiceBaseUrl baseUrl: String, okHttpClient: OkHttpClient, gson: Gson): Retrofit =
             Retrofit.Builder()
                     .baseUrl(baseUrl)
                     .client(okHttpClient)
