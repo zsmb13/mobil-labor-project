@@ -20,7 +20,7 @@ class SetListsPresenter : Presenter<SetListsScreen>() {
 
     fun getSetLists() = launchAsync {
 
-        var result = setListsInteractor.getUserSetLists()
+        val result = setListsInteractor.getUserSetLists()
 
         when (result) {
             is Success -> onSetListsAvailable(result.value)

@@ -43,6 +43,7 @@ class LoginActivity : BaseActivity(), LoginScreen {
 
     override fun navigateToSetLists() {
         startActivity(SetListsActivity.Companion.getStartingIntent(this))
+        finish()
     }
 
     override fun showErrorMessage(message: String) {
