@@ -9,9 +9,9 @@ import javax.inject.Singleton
 class RoomUserTokenDataSource @Inject constructor(
         private var appDatabase: RoomUnbrickableDatabase
 ) : UserTokenDataSource {
-    override suspend fun getUserToken(): String? = appDatabase.userTokenDao().getUserToken()
+    override fun getUserToken(): String? = appDatabase.userTokenDao().getUserToken()
 
-    override suspend fun saveUserToken(token: String) = appDatabase.userTokenDao().saveUserToken(token)
+    override fun saveUserToken(token: String) = appDatabase.userTokenDao().saveUserToken(token)
 
-    override suspend fun deleteUserToken() = appDatabase.userTokenDao().deleteUserToken()
+    override fun deleteUserToken() = appDatabase.userTokenDao().deleteUserToken()
 }

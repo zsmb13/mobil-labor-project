@@ -4,9 +4,9 @@ import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.SetList
 
 
 interface SetListDataSource {
-    suspend fun getAll(): List<SetList>
+    fun getAll(): List<SetList>
 
-    suspend fun insertAll(vararg items: SetList)
+    fun insertAll(vararg items: SetList)
 
-    suspend fun deleteAll()
+    fun deleteAll()
 }

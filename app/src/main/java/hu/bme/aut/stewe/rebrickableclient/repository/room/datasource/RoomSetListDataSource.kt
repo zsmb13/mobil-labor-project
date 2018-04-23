@@ -10,9 +10,9 @@ import javax.inject.Singleton
 class RoomSetListDataSource @Inject constructor(
         private var appDatabase: RoomUnbrickableDatabase
 ) : SetListDataSource {
-    override suspend fun getAll(): List<SetList> = appDatabase.setListDao().getAll()
+    override fun getAll(): List<SetList> = appDatabase.setListDao().getAll()
 
-    override suspend fun insertAll(vararg items: SetList) = appDatabase.setListDao().insertAll(*items)
+    override fun insertAll(vararg items: SetList) = appDatabase.setListDao().insertAll(*items)
 
-    override suspend fun deleteAll() = appDatabase.setListDao().deleteAll()
+    override fun deleteAll() = appDatabase.setListDao().deleteAll()
 }

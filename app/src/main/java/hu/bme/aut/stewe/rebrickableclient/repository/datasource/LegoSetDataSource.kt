@@ -4,9 +4,9 @@ import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.LegoSet
 
 
 interface LegoSetDataSource {
-    suspend fun getAll(): List<LegoSet>
+    fun getAll(): List<LegoSet>
 
-    suspend fun insertAll(vararg legoSets: LegoSet)
+    fun insertAll(vararg legoSets: LegoSet)
 
-    suspend fun deleteAll()
+    fun deleteAll()
 }

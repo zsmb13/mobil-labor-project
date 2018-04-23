@@ -10,9 +10,9 @@ import javax.inject.Singleton
 class RoomLegoSetDataSource @Inject constructor(
         private var appDatabase: RoomUnbrickableDatabase
 ) : LegoSetDataSource {
-    override suspend fun getAll(): List<LegoSet> = appDatabase.legoSetDao().getAll()
+    override fun getAll(): List<LegoSet> = appDatabase.legoSetDao().getAll()
 
-    override suspend fun insertAll(vararg legoSets: LegoSet) = appDatabase.legoSetDao().insertAll(*legoSets)
+    override fun insertAll(vararg legoSets: LegoSet) = appDatabase.legoSetDao().insertAll(*legoSets)
 
-    override suspend fun deleteAll() = appDatabase.legoSetDao().deleteAll()
+    override fun deleteAll() = appDatabase.legoSetDao().deleteAll()
 }

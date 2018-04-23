@@ -2,6 +2,7 @@ package hu.bme.aut.stewe.rebrickableclient.ui.setdetails
 
 import android.os.Bundle
 import hu.bme.aut.stewe.rebrickableclient.injector
+import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.LegoSet
 import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
 import javax.inject.Inject
 
@@ -33,7 +34,7 @@ class SetDetailsActivity : BaseActivity(), SetDetailsScreen {
         // TODO refresh set details
     }
 
-    override fun showSetDetails(set: Any) {
+    override fun showSetDetails(set: LegoSet) {
         TODO("not implemented")
     }
 
