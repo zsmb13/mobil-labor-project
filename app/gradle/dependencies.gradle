@@ -2,7 +2,7 @@ def dependencyVersions = [
 
 		// App dependencies
 
-		'appcompatv7'        : '27.1.0',
+		'appcompatv7'        : '27.1.1',
 		'dagger'             : '2.15',
 		'recyclerview'       : '27.1.0',
 		'retrofit'           : '2.3.0',
