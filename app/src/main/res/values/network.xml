@@ -1,4 +1,4 @@
 <resources>
-	<string name="rebrickable_base_url">https://rebrickable.com/api/v3</string>
+	<string name="rebrickable_base_url">https://rebrickable.com/api/v3/</string>
 	<string name="rebrickable_key">039856d29d833b59749066f9c8ae7cb9</string>
 </resources>
