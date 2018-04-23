@@ -2,6 +2,7 @@ package hu.bme.aut.stewe.rebrickableclient.repository.room.dao
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
+import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.LegoSet
 
@@ -10,7 +11,7 @@ interface LegoSetDao {
     @Query("SELECT * FROM LegoSet")
     fun getAll(): List<LegoSet>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg legoSets: LegoSet)
 
     @Query("DELETE FROM LegoSet")
