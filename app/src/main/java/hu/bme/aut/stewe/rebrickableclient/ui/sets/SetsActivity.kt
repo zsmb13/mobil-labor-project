@@ -1,7 +1,8 @@
 package hu.bme.aut.stewe.rebrickableclient.ui.sets
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.LegoSet
 import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
@@ -12,9 +13,12 @@ class SetsActivity : BaseActivity(), SetsScreen {
     @Inject
     lateinit var presenter: SetsPresenter
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    var seListId = -1L
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         injector.inject(this)
+        seListId = intent.extras.getLong(EXTRA_SET_LIST_ID)
     }
 
     override fun onStart() {
@@ -29,7 +33,7 @@ class SetsActivity : BaseActivity(), SetsScreen {
 
     override fun onResume() {
         super.onResume()
-        // TODO refresh sets
+        presenter.getSets(seListId)
     }
 
     override fun showErrorMessage(message: String) {
@@ -42,5 +46,16 @@ class SetsActivity : BaseActivity(), SetsScreen {
 
     override fun navigateToSetDetails(setId: String) {
         TODO("not implemented")
+    }
+
+    companion object {
+        val EXTRA_SET_LIST_ID = "set_list_id"
+
+        @JvmStatic
+        fun getStartingIntent(from: Activity, setListId: Long): Intent {
+            return Intent(from, SetsActivity::class.java).apply {
+                putExtra(EXTRA_SET_LIST_ID, setListId)
+            }
+        }
     }
 }

@@ -6,14 +6,14 @@
 	android:layout_height="@dimen/setlist_item_height">
 
 	<TextView
-		android:id="@+id/setlistItemName"
+		android:id="@+id/setItemName"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_marginBottom="8dp"
 		android:layout_marginEnd="8dp"
 		android:layout_marginStart="8dp"
 		android:layout_marginTop="8dp"
-		app:layout_constraintBottom_toTopOf="@+id/setListItemSetCount"
+		app:layout_constraintBottom_toTopOf="@+id/setItemNumber"
 		app:layout_constraintEnd_toStartOf="@+id/setListArrowImage"
 		app:layout_constraintHorizontal_bias="0.0"
 		app:layout_constraintStart_toStartOf="parent"
@@ -21,14 +21,14 @@
 		tools:text="Set List Name" />
 
 	<TextView
-		android:id="@+id/setListItemSetCount"
+		android:id="@+id/setItemNumber"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_marginBottom="8dp"
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="@+id/setlistItemName"
-		app:layout_constraintStart_toStartOf="@+id/setlistItemName"
-		app:layout_constraintTop_toBottomOf="@+id/setlistItemName"
+		app:layout_constraintEnd_toEndOf="@+id/setItemName"
+		app:layout_constraintStart_toStartOf="@+id/setItemName"
+		app:layout_constraintTop_toBottomOf="@+id/setItemName"
 		tools:text="1000 sets" />
 
 	<ImageView

@@ -37,8 +37,8 @@ class SetListsAdapter(
 
     class SetListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun onBind(setList: SetList, clickListener: (SetList) -> Unit) = with(itemView) {
-            setlistItemName.text = setList.name
-            setListItemSetCount.text = setList.numSets.toString()
+            setItemName.text = setList.name
+            setItemNumber.text = setList.numSets.toString()
             setOnClickListener { clickListener(setList) }
         }
     }

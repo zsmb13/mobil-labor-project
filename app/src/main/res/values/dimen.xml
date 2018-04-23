@@ -7,4 +7,6 @@
 	<dimen name="login_logo_form_distance">24dp</dimen>
 
 	<dimen name="setlist_item_height">70dp</dimen>
+	<dimen name="sets_item_image_size">56dp</dimen>
+
 </resources>

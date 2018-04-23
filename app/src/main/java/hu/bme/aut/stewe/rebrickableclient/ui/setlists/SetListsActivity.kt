@@ -10,6 +10,7 @@ import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.SetList
 import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
 import hu.bme.aut.stewe.rebrickableclient.ui.longSnack
+import hu.bme.aut.stewe.rebrickableclient.ui.sets.SetsActivity
 import kotlinx.android.synthetic.main.activity_setlists.*
 import javax.inject.Inject
 
@@ -59,7 +60,7 @@ class SetListsActivity : BaseActivity(), SetListsScreen {
     override fun showSetLists(setLists: List<SetList>) = adapter.refreshSetLists(setLists)
 
     override fun navigateToSets(setListId: Long) {
-        TODO("not implemented")
+        startActivity(SetsActivity.getStartingIntent(this, setListId))
     }
 
     companion object {
