@@ -29,7 +29,7 @@ class LoginInteractor : Interactor() {
         }
     }
 
-    private suspend fun saveUserToken(token: String) {
+    private fun saveUserToken(token: String) {
         repository.userTokenData().saveUserToken(token)
     }
 }

@@ -1,8 +1,11 @@
 package hu.bme.aut.stewe.rebrickableclient.ui.login
 
 import android.os.Bundle
+import hu.bme.aut.stewe.rebrickableclient.R
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
+import hu.bme.aut.stewe.rebrickableclient.ui.longSnack
+import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 
 class LoginActivity : BaseActivity(), LoginScreen {
@@ -11,7 +14,12 @@ class LoginActivity : BaseActivity(), LoginScreen {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login)
         injector.inject(this)
+
+        loginButton.setOnClickListener {
+            presenter.login(loginUserName.text.toString(), loginPassword.text.toString())
+        }
     }
 
     override fun onStart() {
@@ -24,15 +32,11 @@ class LoginActivity : BaseActivity(), LoginScreen {
         super.onStop()
     }
 
-    override fun navigateToSets(setListId: String) {
-        TODO("not implemented")
-    }
-
     override fun navigateToSetLists() {
         TODO("not implemented")
     }
 
     override fun showErrorMessage(message: String) {
-        TODO("not implemented")
+        loginButton.longSnack(message)
     }
 }

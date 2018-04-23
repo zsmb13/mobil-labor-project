@@ -5,6 +5,4 @@ import hu.bme.aut.stewe.rebrickableclient.ui.BasicActionsScreen
 
 interface LoginScreen : BasicActionsScreen {
     fun navigateToSetLists()
-
-    fun navigateToSets(setListId: String)
 }
