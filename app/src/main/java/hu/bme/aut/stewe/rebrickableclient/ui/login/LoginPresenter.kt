@@ -1,5 +1,6 @@
 package hu.bme.aut.stewe.rebrickableclient.ui.login
 
+import hu.bme.aut.stewe.rebrickableclient.asyncRepository
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.interactor.*
 import hu.bme.aut.stewe.rebrickableclient.launchAsync
@@ -16,13 +17,20 @@ class LoginPresenter : Presenter<LoginScreen>() {
         injector.inject(this)
     }
 
+    fun checkIfLoggedIn() = launchAsync {
+        val result = asyncRepository { loginInteractor.repository.userTokenData().getUserToken() }.await()
+        if (result != null) {
+            screen?.navigateToSetLists()
+        }
+    }
+
     fun login(username: String, password: String) = launchAsync {
         val result = loginInteractor.getUserToken(username, password)
 
         when (result) {
             is Success -> screen?.navigateToSetLists()
             is ServiceError -> screen?.showErrorMessage(result.error.message())
-            is NetworkException -> screen?.showErrorMessage(result.exception.message!!)
+            is NetworkException -> screen?.showErrorMessage(result.exception.toString())
             is DataSourceException -> screen?.showErrorMessage(result.exception.message!!)
         }
     }

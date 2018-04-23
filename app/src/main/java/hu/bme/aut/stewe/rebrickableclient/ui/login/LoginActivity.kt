@@ -3,10 +3,12 @@ package hu.bme.aut.stewe.rebrickableclient.ui.login
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import hu.bme.aut.stewe.rebrickableclient.R
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
 import hu.bme.aut.stewe.rebrickableclient.ui.longSnack
+import hu.bme.aut.stewe.rebrickableclient.ui.setlists.SetListsActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 
@@ -34,12 +36,18 @@ class LoginActivity : BaseActivity(), LoginScreen {
         super.onStop()
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.checkIfLoggedIn()
+    }
+
     override fun navigateToSetLists() {
-        TODO("not implemented")
+        startActivity(SetListsActivity.Companion.getStartingIntent(this))
     }
 
     override fun showErrorMessage(message: String) {
         loginButton.longSnack(message)
+        Log.d(this.javaClass.simpleName, message)
     }
 
     companion object {
