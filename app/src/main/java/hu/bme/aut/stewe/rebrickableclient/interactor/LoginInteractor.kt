@@ -1,5 +1,6 @@
 package hu.bme.aut.stewe.rebrickableclient.interactor
 
+import hu.bme.aut.stewe.rebrickableclient.asyncRepository
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.network.awaitResult
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.api.UsersApi
@@ -21,15 +22,11 @@ class LoginInteractor : Interactor() {
         return if (storedToken == null) {
             val result = usersApi.usersTokenCreate(username, password).awaitResult()
             if (result is Success) {
-                saveUserToken(result.value.userToken!!)
+                asyncRepository { repository.userTokenData().saveUserToken(result.value.userToken!!) }
             }
             result
         } else {
             Success(UserToken(userToken = storedToken))
         }
-    }
-
-    private fun saveUserToken(token: String) {
-        repository.userTokenData().saveUserToken(token)
     }
 }

@@ -15,6 +15,6 @@ class SetsInteractor : Interactor() {
     }
 
     suspend fun getLegoSets(setListId: Long): Result<LegoSetsInSetList> = runWithTokenCheck { token ->
-        usersApi.usersSetlistsSetsList(setListId, token, 0, Int.MAX_VALUE, "asc").awaitResult()
+        usersApi.usersSetlistsSetsList(setListId, token, 1, Int.MAX_VALUE, "asc").awaitResult()
     }
 }

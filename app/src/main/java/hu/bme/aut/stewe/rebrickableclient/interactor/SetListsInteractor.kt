@@ -17,7 +17,7 @@ class SetListsInteractor : Interactor() {
     }
 
     suspend fun getUserSetLists(): Result<SetLists> = runWithTokenCheck { token ->
-        val result = usersApi.usersSetlistsList(token, 0, Integer.MAX_VALUE).awaitResult()
+        val result = usersApi.usersSetlistsList(token, 1, Integer.MAX_VALUE).awaitResult()
         if (result is Success) {
             asyncRepository {
                 repository.setListData().insertAll(*result.value.results.toTypedArray())
