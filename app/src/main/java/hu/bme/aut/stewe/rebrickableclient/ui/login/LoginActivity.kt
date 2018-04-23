@@ -1,5 +1,7 @@
 package hu.bme.aut.stewe.rebrickableclient.ui.login
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import hu.bme.aut.stewe.rebrickableclient.R
 import hu.bme.aut.stewe.rebrickableclient.injector
@@ -10,7 +12,7 @@ import javax.inject.Inject
 
 class LoginActivity : BaseActivity(), LoginScreen {
     @Inject
-    lateinit var presenter : LoginPresenter
+    lateinit var presenter: LoginPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,5 +40,12 @@ class LoginActivity : BaseActivity(), LoginScreen {
 
     override fun showErrorMessage(message: String) {
         loginButton.longSnack(message)
+    }
+
+    companion object {
+        @JvmStatic
+        fun getStartingIntent(from: Activity): Intent {
+            return Intent(from, LoginActivity::class.java)
+        }
     }
 }
