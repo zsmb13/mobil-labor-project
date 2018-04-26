@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.LinearLayoutManager.VERTICAL
+import hu.bme.aut.stewe.rebrickableclient.R
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.LegoSet
 import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
@@ -22,6 +23,7 @@ class SetsActivity : BaseActivity(), SetsScreen {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_sets)
         injector.inject(this)
         seListId = intent.extras.getLong(EXTRA_SET_LIST_ID)
 
@@ -55,9 +57,8 @@ class SetsActivity : BaseActivity(), SetsScreen {
         TODO("not implemented")
     }
 
-    override fun showSets(sets: List<LegoSet>) {
-        TODO("not implemented")
-    }
+    override fun showSets(sets: List<LegoSet>) =
+            setsAdapter.refreshSets(sets)
 
     override fun navigateToSetDetails(setId: String) {
 

@@ -7,18 +7,19 @@ import android.view.ViewGroup
 import hu.bme.aut.stewe.rebrickableclient.R
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.LegoSet
 import hu.bme.aut.stewe.rebrickableclient.ui.inflate
+import hu.bme.aut.stewe.rebrickableclient.ui.loadFromUrl
 import kotlinx.android.synthetic.main.item_set.view.*
 
 
 class SetsAdapter(
-        var context: Context,
-        var clickListener: (LegoSet) -> Unit
+        private var context: Context,
+        private var clickListener: (LegoSet) -> Unit
 ) : RecyclerView.Adapter<SetsAdapter.SetsViewHolder>() {
 
     var content = mutableListOf<LegoSet>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SetsViewHolder {
-        val view = parent.inflate(context, R.layout.item_setlist)
+        val view = parent.inflate(context, R.layout.item_set)
         return SetsViewHolder(view)
     }
 
@@ -39,6 +40,7 @@ class SetsAdapter(
         fun onBind(legoSet: LegoSet, clickListener: (LegoSet) -> Unit) = with(itemView) {
             setItemName.text = legoSet.name
             setItemSetNumber.text = legoSet.setNum
+            setItemImageIcon.loadFromUrl(legoSet.setImgUrl)
             setOnClickListener { clickListener(legoSet) }
         }
     }
