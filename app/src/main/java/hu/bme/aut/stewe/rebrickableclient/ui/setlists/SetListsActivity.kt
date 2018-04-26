@@ -49,15 +49,19 @@ class SetListsActivity : BaseActivity(), SetListsScreen {
 
     override fun onResume() {
         super.onResume()
+        showLoading()
         presenter.getSetLists()
     }
 
     override fun showErrorMessage(message: String) {
+        hideLoading()
         setListsRecyclerView.longSnack(message)
     }
 
-    override fun showSetLists(setLists: List<SetList>) =
-            setListAdapter.refreshSetLists(setLists)
+    override fun showSetLists(setLists: List<SetList>) {
+        hideLoading()
+        setListAdapter.refreshSetLists(setLists)
+    }
 
     override fun navigateToSets(setListId: Long) {
         startActivity(SetsActivity.getStartingIntent(this, setListId))

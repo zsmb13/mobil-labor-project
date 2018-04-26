@@ -9,6 +9,7 @@ import hu.bme.aut.stewe.rebrickableclient.R
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.LegoSet
 import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
+import hu.bme.aut.stewe.rebrickableclient.ui.longSnack
 import kotlinx.android.synthetic.main.activity_sets.*
 import javax.inject.Inject
 
@@ -50,15 +51,19 @@ class SetsActivity : BaseActivity(), SetsScreen {
 
     override fun onResume() {
         super.onResume()
+        showLoading()
         presenter.getSets(seListId)
     }
 
     override fun showErrorMessage(message: String) {
-        TODO("not implemented")
+        hideLoading()
+        setsRecyclerView.longSnack(message)
     }
 
-    override fun showSets(sets: List<LegoSet>) =
-            setsAdapter.refreshSets(sets)
+    override fun showSets(sets: List<LegoSet>) {
+        setsAdapter.refreshSets(sets)
+        hideLoading()
+    }
 
     override fun navigateToSetDetails(setId: String) {
 
