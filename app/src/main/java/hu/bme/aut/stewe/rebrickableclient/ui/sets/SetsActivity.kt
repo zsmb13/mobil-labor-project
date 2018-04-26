@@ -3,9 +3,12 @@ package hu.bme.aut.stewe.rebrickableclient.ui.sets
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.LinearLayoutManager.VERTICAL
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.LegoSet
 import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
+import kotlinx.android.synthetic.main.activity_sets.*
 import javax.inject.Inject
 
 
@@ -13,12 +16,24 @@ class SetsActivity : BaseActivity(), SetsScreen {
     @Inject
     lateinit var presenter: SetsPresenter
 
-    var seListId = -1L
+    private var seListId = -1L
+
+    private lateinit var setsAdapter: SetsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injector.inject(this)
         seListId = intent.extras.getLong(EXTRA_SET_LIST_ID)
+
+        setsAdapter = SetsAdapter(this) { legoSet ->
+            navigateToSetDetails(legoSet.setNum)
+        }
+
+        setsRecyclerView.also {
+            it.adapter = setsAdapter
+            it.layoutManager = LinearLayoutManager(this, VERTICAL, false)
+        }
+
     }
 
     override fun onStart() {
@@ -45,11 +60,11 @@ class SetsActivity : BaseActivity(), SetsScreen {
     }
 
     override fun navigateToSetDetails(setId: String) {
-        TODO("not implemented")
+
     }
 
     companion object {
-        val EXTRA_SET_LIST_ID = "set_list_id"
+        const val EXTRA_SET_LIST_ID = "set_list_id"
 
         @JvmStatic
         fun getStartingIntent(from: Activity, setListId: Long): Intent {

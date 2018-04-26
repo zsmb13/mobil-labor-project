@@ -20,19 +20,21 @@ class SetListsActivity : BaseActivity(), SetListsScreen {
     @Inject
     lateinit var presenter: SetListsPresenter
 
-    private lateinit var adapter: SetListsAdapter
+    private lateinit var setListAdapter: SetListsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setlists)
         injector.inject(this)
 
-        adapter = SetListsAdapter(this) { setList ->
+        setListAdapter = SetListsAdapter(this) { setList ->
             navigateToSets(setList.id!!)
         }
 
-        setListsRecyclerView.adapter = adapter
-        setListsRecyclerView.layoutManager = LinearLayoutManager(this, VERTICAL, false)
+        setListsRecyclerView.also {
+            it.adapter = setListAdapter
+            it.layoutManager = LinearLayoutManager(this, VERTICAL, false)
+        }
     }
 
     override fun onStart() {
@@ -54,7 +56,7 @@ class SetListsActivity : BaseActivity(), SetListsScreen {
         setListsRecyclerView.longSnack(message)
     }
 
-    override fun showSetLists(setLists: List<SetList>) = adapter.refreshSetLists(setLists)
+    override fun showSetLists(setLists: List<SetList>) = setListAdapter.refreshSetLists(setLists)
 
     override fun navigateToSets(setListId: Long) {
         startActivity(SetsActivity.getStartingIntent(this, setListId))
