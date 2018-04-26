@@ -8,6 +8,7 @@
 
 	<ImageView
 		android:id="@+id/imageView"
+		android:src="@drawable/brick_icon"
 		android:layout_width="@dimen/login_logo_size"
 		android:layout_height="@dimen/login_logo_size"
 		android:layout_marginLeft="@dimen/default_margin"
