@@ -22,13 +22,10 @@ class SetListsActivity : BaseActivity(), SetListsScreen {
 
     private lateinit var adapter: SetListsAdapter
 
-    init {
-        injector.inject(this)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setlists)
+        injector.inject(this)
 
         adapter = SetListsAdapter(this) { setList ->
             navigateToSets(setList.id!!)
