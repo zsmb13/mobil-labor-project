@@ -10,6 +10,7 @@ import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.LegoSet
 import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
 import hu.bme.aut.stewe.rebrickableclient.ui.longSnack
+import hu.bme.aut.stewe.rebrickableclient.ui.setdetails.SetDetailsActivity
 import kotlinx.android.synthetic.main.activity_sets.*
 import javax.inject.Inject
 
@@ -66,7 +67,7 @@ class SetsActivity : BaseActivity(), SetsScreen {
     }
 
     override fun navigateToSetDetails(setId: String) {
-
+        startActivity(SetDetailsActivity.getStartingIntent(this, setId))
     }
 
     companion object {

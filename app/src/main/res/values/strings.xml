@@ -3,4 +3,9 @@
 	<string name="username">Username</string>
 	<string name="password">Password</string>
 	<string name="login">Login</string>
+	<string name="theme">Theme</string>
+	<string name="subtheme">Subtheme</string>
+	<string name="year">Year</string>
+	<string name="parts">Parts</string>
+	<string name="visit_website">Visit website</string>
 </resources>

@@ -343,7 +343,7 @@ paths:
         '200':
           description: ''
           schema:
-            $ref: "#/definitions/LegoSet"
+            $ref: "#/definitions/SetListLegoSet"
       operationId: users_setlists_sets_read
       parameters:
         - type: "string"

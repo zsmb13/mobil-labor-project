@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<ImageView
+		android:id="@+id/setDetailsImage"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/set_details_image_height"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:srcCompat="@color/cardview_dark_background" />
+
+	<TextView
+		android:id="@+id/setDetailsSetName"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="16dp"
+		android:textSize="18sp"
+		android:textStyle="bold"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/setDetailsImage"
+		tools:text="UCS Millenium Falcon" />
+
+	<TextView
+		android:id="@+id/setDetailsSetNumber"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="8dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/setDetailsSetName"
+		tools:text="75192" />
+
+	<TextView
+		android:id="@+id/labelSetDetailsTheme"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:text="@string/theme"
+		android:textSize="18sp"
+		android:textStyle="bold"
+		app:layout_constraintBaseline_toBaselineOf="@+id/labelSetDetailsSubtheme"
+		app:layout_constraintEnd_toStartOf="@+id/labelSetDetailsSubtheme"
+		app:layout_constraintHorizontal_chainStyle="spread"
+		app:layout_constraintStart_toStartOf="parent" />
+
+	<TextView
+		android:id="@+id/setDetailsTheme"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintBaseline_toBaselineOf="@+id/setDetailsSubtheme"
+		app:layout_constraintEnd_toEndOf="@+id/labelSetDetailsTheme"
+		app:layout_constraintStart_toStartOf="@+id/labelSetDetailsTheme"
+		tools:text="Star Wars" />
+
+	<TextView
+		android:id="@+id/labelSetDetailsSubtheme"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginEnd="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="24dp"
+		android:text="@string/subtheme"
+		android:textSize="18sp"
+		android:textStyle="bold"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toEndOf="@+id/labelSetDetailsTheme"
+		app:layout_constraintTop_toBottomOf="@+id/setDetailsSetNumber" />
+
+	<TextView
+		android:id="@+id/setDetailsSubtheme"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="8dp"
+		app:layout_constraintEnd_toEndOf="@+id/labelSetDetailsSubtheme"
+		app:layout_constraintStart_toStartOf="@+id/labelSetDetailsSubtheme"
+		app:layout_constraintTop_toBottomOf="@+id/labelSetDetailsSubtheme"
+		tools:text="Ultimate Collector Series" />
+
+	<TextView
+		android:id="@+id/labelSetDetailsYear"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/year"
+		android:textSize="18sp"
+		android:textStyle="bold"
+		app:layout_constraintBaseline_toBaselineOf="@+id/labelSetDetailsParts"
+		app:layout_constraintEnd_toEndOf="@+id/labelSetDetailsTheme"
+		app:layout_constraintHorizontal_chainStyle="spread"
+		app:layout_constraintStart_toStartOf="@+id/labelSetDetailsTheme" />
+
+	<TextView
+		android:id="@+id/setDetailsYear"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintBaseline_toBaselineOf="@+id/setDetailsParts"
+		app:layout_constraintEnd_toEndOf="@+id/labelSetDetailsYear"
+		app:layout_constraintStart_toStartOf="@+id/labelSetDetailsYear"
+		tools:text="2017" />
+
+	<TextView
+		android:id="@+id/labelSetDetailsParts"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="24dp"
+		android:text="@string/parts"
+		android:textSize="18sp"
+		android:textStyle="bold"
+		app:layout_constraintEnd_toEndOf="@+id/labelSetDetailsSubtheme"
+		app:layout_constraintStart_toStartOf="@+id/labelSetDetailsSubtheme"
+		app:layout_constraintTop_toTopOf="@+id/setDetailsMiddleBarrier" />
+
+	<TextView
+		android:id="@+id/setDetailsParts"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="8dp"
+		app:layout_constraintEnd_toEndOf="@+id/labelSetDetailsParts"
+		app:layout_constraintStart_toStartOf="@+id/labelSetDetailsParts"
+		app:layout_constraintTop_toBottomOf="@+id/labelSetDetailsParts"
+		tools:text="7539" />
+
+	<Button
+		android:id="@+id/setDetailsShowDetailsWebPageButton"
+		style="@style/Widget.AppCompat.Button.Colored"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="8dp"
+		android:layout_marginEnd="8dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="24dp"
+		android:text="@string/visit_website"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="@+id/setDetailsBottomBarrier" />
+
+	<android.support.constraint.Barrier
+		android:id="@+id/setDetailsBottomBarrier"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:barrierDirection="bottom"
+		app:constraint_referenced_ids="setDetailsYear, setDetailsParts"
+		tools:layout_editor_absoluteY="391dp" />
+
+	<android.support.constraint.Barrier
+		android:id="@+id/setDetailsMiddleBarrier"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:barrierDirection="bottom"
+		app:constraint_referenced_ids="setDetailsTheme, setDetailsSubtheme"
+		tools:layout_editor_absoluteY="567dp" />
+
+</android.support.constraint.ConstraintLayout>

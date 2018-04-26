@@ -4,7 +4,7 @@ import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.network.awaitResult
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.api.LegoApi
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.api.UsersApi
-import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.LegoSet
+import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.SetListLegoSet
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.Theme
 import javax.inject.Inject
 
@@ -19,7 +19,7 @@ class SetDetailsInteractor : Interactor() {
         injector.inject(this)
     }
 
-    suspend fun getLegoSetDetails(id: String): Result<LegoSet> = runWithTokenCheck { token ->
+    suspend fun getLegoSetDetails(id: String): Result<SetListLegoSet> = runWithTokenCheck { token ->
         usersApi.usersSetsRead(id, token).awaitResult()
     }
 
