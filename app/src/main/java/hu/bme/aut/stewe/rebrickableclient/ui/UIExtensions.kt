@@ -15,4 +15,4 @@ fun View.shortSnack(msg: String) =
         Snackbar.make(this, msg, Snackbar.LENGTH_SHORT)
 
 fun ViewGroup.inflate(context: Context, @LayoutRes layoutId: Int) =
-        LayoutInflater.from(context).inflate(layoutId, this, false)
+        LayoutInflater.from(context).inflate(layoutId, this, false)!!
