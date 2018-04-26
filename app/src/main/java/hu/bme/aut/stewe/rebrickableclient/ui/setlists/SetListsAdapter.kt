@@ -11,8 +11,8 @@ import kotlinx.android.synthetic.main.item_setlist.view.*
 
 
 class SetListsAdapter(
-        var context: Context,
-        var clickListener: (SetList) -> Unit
+        private var context: Context,
+        private var clickListener: (SetList) -> Unit
 ) : RecyclerView.Adapter<SetListsAdapter.SetListViewHolder>() {
 
     var content = mutableListOf<SetList>()

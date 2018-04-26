@@ -56,7 +56,8 @@ class SetListsActivity : BaseActivity(), SetListsScreen {
         setListsRecyclerView.longSnack(message)
     }
 
-    override fun showSetLists(setLists: List<SetList>) = setListAdapter.refreshSetLists(setLists)
+    override fun showSetLists(setLists: List<SetList>) =
+            setListAdapter.refreshSetLists(setLists)
 
     override fun navigateToSets(setListId: Long) {
         startActivity(SetsActivity.getStartingIntent(this, setListId))
