@@ -9,7 +9,7 @@ import javax.inject.Inject
 class SetDetailsPresenter : Presenter<SetDetailsScreen>() {
 
     @Inject
-    lateinit var setDetailsInteractor : SetDetailsInteractor
+    lateinit var setDetailsInteractor: SetDetailsInteractor
 
     init {
         injector.inject(this)
@@ -18,7 +18,7 @@ class SetDetailsPresenter : Presenter<SetDetailsScreen>() {
     fun getSetDetails(setId: String) = launchAsync {
         var result = setDetailsInteractor.getLegoSetDetails(setId)
         when (result) {
-            is Success -> screen?.showSetDetails(result.value)
+            is Success -> screen?.showSetDetails(result.value.set!!)
             is ServiceError -> screen?.showErrorMessage(result.error.message!!)
             is NetworkException -> screen?.showErrorMessage(result.exception.message!!)
             is UserNotLoggedInException -> screen?.showErrorMessage("TODO user should not be here!")

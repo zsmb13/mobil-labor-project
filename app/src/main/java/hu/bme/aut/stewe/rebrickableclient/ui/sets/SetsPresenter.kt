@@ -18,7 +18,7 @@ class SetsPresenter: Presenter<SetsScreen>() {
     }
 
     fun getSets(setListId: Long) = launchAsync {
-        var result = setsInteractor.getLegoSets(setListId)
+        val result = setsInteractor.getLegoSets(setListId)
         when (result) {
             is Success -> onSetsAvailable(result)
             is ServiceError -> screen?.showErrorMessage(result.error.message!!)
@@ -28,7 +28,7 @@ class SetsPresenter: Presenter<SetsScreen>() {
     }
 
     private fun onSetsAvailable(result: Success<LegoSetsInSetList>) {
-        var sets = result.value.results.map { it -> it.set!! }
+        val sets = result.value.results.map { it -> it.set!! }
         screen?.showSets(sets)
     }
 }

@@ -237,7 +237,7 @@ interface UsersApi {
     @GET("users/{user_token}/sets/{set_num}/")
     fun usersSetsRead(
             @Path("set_num") setNum: String, @Path("user_token") userToken: String
-    ): Call<LegoSet>
+    ): Call<SetListLegoSet>
 
 
     /**

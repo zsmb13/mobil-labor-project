@@ -3,6 +3,7 @@ package hu.bme.aut.stewe.rebrickableclient.ui.setlists
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.interactor.*
 import hu.bme.aut.stewe.rebrickableclient.launchAsync
+import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.SetList
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.SetLists
 import hu.bme.aut.stewe.rebrickableclient.ui.Presenter
 import javax.inject.Inject
@@ -19,7 +20,7 @@ class SetListsPresenter : Presenter<SetListsScreen>() {
 
     fun getSetLists() = launchAsync {
 
-        var result = setListsInteractor.getUserSetLists()
+        val result = setListsInteractor.getUserSetLists()
 
         when (result) {
             is Success -> onSetListsAvailable(result.value)
@@ -37,7 +38,7 @@ class SetListsPresenter : Presenter<SetListsScreen>() {
         }
     }
 
-    private fun onFetchSetSuccessful(setLists: List<Any>) = screen?.showSetLists(setLists)
+    private fun onFetchSetSuccessful(setLists: List<SetList>) = screen?.showSetLists(setLists)
 
     private fun onFetchFailed(message: String) = screen?.showErrorMessage(message)
 }
