@@ -5,7 +5,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class InteractorModule {
+open class InteractorModule {
     @Provides
     @Singleton
     fun provideLoginInteractor() = LoginInteractor()

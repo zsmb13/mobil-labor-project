@@ -20,7 +20,7 @@ import hu.bme.aut.stewe.rebrickableclient.ui.sets.SetsPresenter
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [UIModule::class, NetworkModule::class, RepositoryModule::class])
+@Component(modules = [UIModule::class, InteractorModule::class, NetworkModule::class, RepositoryModule::class])
 interface AppComponent {
     fun inject(loginActivity: LoginActivity)
     fun inject(setListsPresenter: SetListsPresenter)
