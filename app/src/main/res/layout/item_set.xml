@@ -30,7 +30,7 @@
 		app:layout_constraintHorizontal_bias="0.0"
 		app:layout_constraintStart_toEndOf="@+id/setItemImageIcon"
 		app:layout_constraintTop_toTopOf="parent"
-		tools:text="Set List Name" />
+		tools:text="Set name" />
 
 	<TextView
 		android:id="@+id/setItemSetNumber"
@@ -41,7 +41,7 @@
 		app:layout_constraintEnd_toEndOf="@+id/setItemName"
 		app:layout_constraintStart_toStartOf="@+id/setItemName"
 		app:layout_constraintTop_toBottomOf="@+id/setItemName"
-		tools:text="1000 sets" />
+		tools:text="Set number" />
 
 	<ImageView
 		android:id="@+id/setItemArrowImage"

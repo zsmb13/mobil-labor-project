@@ -11,6 +11,7 @@ import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.LegoSet
 import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
 import hu.bme.aut.stewe.rebrickableclient.ui.longSnack
 import hu.bme.aut.stewe.rebrickableclient.ui.setdetails.SetDetailsActivity
+import hu.bme.aut.stewe.rebrickableclient.ui.sets.add.AddSetDialog
 import kotlinx.android.synthetic.main.activity_sets.*
 import javax.inject.Inject
 
@@ -19,7 +20,7 @@ class SetsActivity : BaseActivity(), SetsScreen {
     @Inject
     lateinit var presenter: SetsPresenter
 
-    private var seListId = -1L
+    private var setListId = -1L
 
     private lateinit var setsAdapter: SetsAdapter
 
@@ -27,7 +28,7 @@ class SetsActivity : BaseActivity(), SetsScreen {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sets)
         injector.inject(this)
-        seListId = intent.extras.getLong(EXTRA_SET_LIST_ID)
+        setListId = intent.extras.getLong(EXTRA_SET_LIST_ID)
 
         setsAdapter = SetsAdapter(this) { legoSet ->
             navigateToSetDetails(legoSet.setNum)
@@ -38,6 +39,10 @@ class SetsActivity : BaseActivity(), SetsScreen {
             it.layoutManager = LinearLayoutManager(this, VERTICAL, false)
         }
 
+        setAddButton.setOnClickListener {
+            val dialog = AddSetDialog.newInstance()
+            dialog.show(supportFragmentManager, "AddSetDialog")
+        }
     }
 
     override fun onStart() {
@@ -53,7 +58,7 @@ class SetsActivity : BaseActivity(), SetsScreen {
     override fun onResume() {
         super.onResume()
         showLoading()
-        presenter.getSets(seListId)
+        presenter.getSets(setListId)
     }
 
     override fun showErrorMessage(message: String) {
@@ -68,6 +73,15 @@ class SetsActivity : BaseActivity(), SetsScreen {
 
     override fun navigateToSetDetails(setId: String) {
         startActivity(SetDetailsActivity.getStartingIntent(this, setId))
+    }
+
+    override fun addSetToSetList(setId: String) {
+        presenter.addSetToSetList(setId, setListId)
+    }
+
+    override fun onSetAdded() {
+        showLoading()
+        presenter.getSets(setListId)
     }
 
     companion object {

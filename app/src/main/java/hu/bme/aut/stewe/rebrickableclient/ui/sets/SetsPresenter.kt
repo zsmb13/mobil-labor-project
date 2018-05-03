@@ -8,7 +8,7 @@ import hu.bme.aut.stewe.rebrickableclient.ui.Presenter
 import javax.inject.Inject
 
 
-class SetsPresenter: Presenter<SetsScreen>() {
+class SetsPresenter : Presenter<SetsScreen>() {
 
     @Inject
     lateinit var setsInteractor: SetsInteractor
@@ -27,8 +27,22 @@ class SetsPresenter: Presenter<SetsScreen>() {
         }
     }
 
+    fun addSetToSetList(setId: String, setListId: Long) = launchAsync {
+        val result = setsInteractor.addSetToSetList(setId, setListId)
+        when (result) {
+            is Success -> onSetAdded(result)
+            is ServiceError -> screen?.showErrorMessage(result.error.message!!)
+            is NetworkException -> screen?.showErrorMessage(result.exception.message!!)
+            is UserNotLoggedInException -> screen?.showErrorMessage("TODO user should not be here!")
+        }
+    }
+
     private fun onSetsAvailable(result: Success<LegoSetsInSetList>) {
         val sets = result.value.results.map { it -> it.set!! }
         screen?.showSets(sets)
+    }
+
+    private fun onSetAdded(result: Success<Void>) {
+        screen?.onSetAdded()
     }
 }

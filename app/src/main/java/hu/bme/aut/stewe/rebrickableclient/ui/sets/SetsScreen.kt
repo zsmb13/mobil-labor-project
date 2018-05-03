@@ -8,4 +8,8 @@ interface SetsScreen : BasicActionsScreen {
     fun showSets(sets: List<LegoSet>)
 
     fun navigateToSetDetails(setId: String)
+
+    fun addSetToSetList(setId: String)
+
+    fun onSetAdded()
 }

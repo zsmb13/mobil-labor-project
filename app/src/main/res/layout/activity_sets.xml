@@ -14,4 +14,20 @@
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
 		tools:listitem="@layout/item_set" />
+
+	<android.support.design.widget.FloatingActionButton
+		android:id="@+id/setAddButton"
+		android:layout_width="56dp"
+		android:layout_height="56dp"
+		android:layout_marginBottom="16dp"
+		android:layout_marginEnd="16dp"
+		android:clickable="true"
+		android:focusable="true"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="1.0"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="1.0"
+		app:srcCompat="@drawable/ic_add" />
 </android.support.constraint.ConstraintLayout>
