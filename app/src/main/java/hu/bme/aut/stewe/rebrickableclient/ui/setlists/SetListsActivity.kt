@@ -5,31 +5,35 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.LinearLayoutManager.VERTICAL
+import android.support.v7.widget.RecyclerView
 import hu.bme.aut.stewe.rebrickableclient.R
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.SetList
-import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
+import hu.bme.aut.stewe.rebrickableclient.ui.AppBarActivity
 import hu.bme.aut.stewe.rebrickableclient.ui.longSnack
 import hu.bme.aut.stewe.rebrickableclient.ui.sets.SetsActivity
-import kotlinx.android.synthetic.main.activity_setlists.*
 import javax.inject.Inject
 
 
-class SetListsActivity : BaseActivity(), SetListsScreen {
+class SetListsActivity : AppBarActivity(), SetListsScreen {
 
     @Inject
     lateinit var presenter: SetListsPresenter
 
     private lateinit var setListAdapter: SetListsAdapter
 
+    private lateinit var setListsRecyclerView: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_setlists)
+        loadViewWithAppBar(R.layout.activity_setlists, R.string.setlists)
         injector.inject(this)
 
         setListAdapter = SetListsAdapter(this) { setList ->
             navigateToSets(setList.id!!)
         }
+
+        setListsRecyclerView = findViewById(R.id.setListsRecyclerView)
 
         setListsRecyclerView.also {
             it.adapter = setListAdapter

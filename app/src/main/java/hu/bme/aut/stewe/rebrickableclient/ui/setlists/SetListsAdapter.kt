@@ -18,7 +18,7 @@ class SetListsAdapter(
     var content = mutableListOf<SetList>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SetListViewHolder {
-        val view = parent.inflate(context, R.layout.item_setlist)
+        val view = parent.inflate(R.layout.item_setlist)
         return SetListViewHolder(view)
     }
 
