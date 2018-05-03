@@ -11,7 +11,7 @@ import retrofit2.HttpException
 
 suspend fun <T> Call<T>.awaitResult(): Result<T> = this.getResultAsync().await()
 
-suspend fun <T> Call<T>.getResultAsync() : Deferred<Result<T>> = asyncNetwork{
+suspend fun <T> Call<T>.getResultAsync(): Deferred<Result<T>> = asyncNetwork {
     try {
         val response = execute()
 
