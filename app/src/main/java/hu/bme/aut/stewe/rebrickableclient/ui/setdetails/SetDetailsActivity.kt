@@ -5,10 +5,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.customtabs.CustomTabsIntent
+import android.widget.Button
 import hu.bme.aut.stewe.rebrickableclient.R
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.LegoSet
-import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
+import hu.bme.aut.stewe.rebrickableclient.ui.AppBarActivity
 import hu.bme.aut.stewe.rebrickableclient.ui.loadFromUrl
 import hu.bme.aut.stewe.rebrickableclient.ui.longSnack
 import kotlinx.android.synthetic.main.activity_set_details.*
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_sets.*
 import javax.inject.Inject
 
 
-class SetDetailsActivity : BaseActivity(), SetDetailsScreen {
+class SetDetailsActivity : AppBarActivity(), SetDetailsScreen {
     @Inject
     lateinit var presenter: SetDetailsPresenter
 
@@ -26,10 +27,13 @@ class SetDetailsActivity : BaseActivity(), SetDetailsScreen {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_set_details)
         injector.inject(this)
 
+        loadViewWithAppBar(R.layout.activity_set_details, getString(R.string.details))
+
         setNumber = intent.extras.getString(EXTRA_SET_NUMBER)
+
+        val setDetailsShowDetailsWebPageButton = findViewById<Button>(R.id.setDetailsShowDetailsWebPageButton)
 
         setDetailsShowDetailsWebPageButton.setOnClickListener {
             openSetDetailsPage(setUrl)
