@@ -33,8 +33,6 @@ class SetDetailsActivity : AppBarActivity(), SetDetailsScreen {
 
         setNumber = intent.extras.getString(EXTRA_SET_NUMBER)
 
-        val setDetailsShowDetailsWebPageButton = findViewById<Button>(R.id.setDetailsShowDetailsWebPageButton)
-
         setDetailsShowDetailsWebPageButton.setOnClickListener {
             openSetDetailsPage(setUrl)
         }

@@ -27,8 +27,6 @@ class SetsActivity : AppBarActivity(), SetsScreen {
 
     private lateinit var setsAdapter: SetsAdapter
 
-    private lateinit var setsRecyclerView: RecyclerView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injector.inject(this)
@@ -44,8 +42,6 @@ class SetsActivity : AppBarActivity(), SetsScreen {
         setsAdapter = SetsAdapter(this) { legoSet ->
             navigateToSetDetails(legoSet.setNum)
         }
-
-        setsRecyclerView = findViewById(R.id.setsRecyclerView)
 
         setsRecyclerView.also {
             it.adapter = setsAdapter

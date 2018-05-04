@@ -12,6 +12,7 @@ import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.SetList
 import hu.bme.aut.stewe.rebrickableclient.ui.AppBarActivity
 import hu.bme.aut.stewe.rebrickableclient.ui.longSnack
 import hu.bme.aut.stewe.rebrickableclient.ui.sets.SetsActivity
+import kotlinx.android.synthetic.main.activity_setlists.*
 import javax.inject.Inject
 
 
@@ -22,8 +23,6 @@ class SetListsActivity : AppBarActivity(), SetListsScreen {
 
     private lateinit var setListAdapter: SetListsAdapter
 
-    private lateinit var setListsRecyclerView: RecyclerView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         loadViewWithAppBar(R.layout.activity_setlists, getString(R.string.setlists))
@@ -32,8 +31,6 @@ class SetListsActivity : AppBarActivity(), SetListsScreen {
         setListAdapter = SetListsAdapter(this) { setList ->
             navigateToSets(setList.id!!, setList.name!!)
         }
-
-        setListsRecyclerView = findViewById(R.id.setListsRecyclerView)
 
         setListsRecyclerView.also {
             it.adapter = setListAdapter
