@@ -5,10 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.LinearLayoutManager.VERTICAL
+import android.support.v7.widget.RecyclerView
 import hu.bme.aut.stewe.rebrickableclient.R
 import hu.bme.aut.stewe.rebrickableclient.injector
 import hu.bme.aut.stewe.rebrickableclient.network.swagger.model.LegoSet
-import hu.bme.aut.stewe.rebrickableclient.ui.BaseActivity
+import hu.bme.aut.stewe.rebrickableclient.ui.AppBarActivity
 import hu.bme.aut.stewe.rebrickableclient.ui.longSnack
 import hu.bme.aut.stewe.rebrickableclient.ui.setdetails.SetDetailsActivity
 import hu.bme.aut.stewe.rebrickableclient.ui.sets.add.AddSetDialog
@@ -16,23 +17,35 @@ import kotlinx.android.synthetic.main.activity_sets.*
 import javax.inject.Inject
 
 
-class SetsActivity : BaseActivity(), SetsScreen {
+class SetsActivity : AppBarActivity(), SetsScreen {
     @Inject
     lateinit var presenter: SetsPresenter
 
     private var setListId = -1L
 
+    private var setListName = ""
+
     private lateinit var setsAdapter: SetsAdapter
+
+    private lateinit var setsRecyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sets)
         injector.inject(this)
-        setListId = intent.extras.getLong(EXTRA_SET_LIST_ID)
+
+        with(intent.extras) {
+            setListId = getLong(EXTRA_SET_LIST_ID)
+            setListName = getString(EXTRA_SET_LIST_NAME)
+        }
+
+        loadViewWithAppBar(R.layout.activity_sets,
+                String.format(getString(R.string.sets_in_setlist_title_format), setListName))
 
         setsAdapter = SetsAdapter(this) { legoSet ->
             navigateToSetDetails(legoSet.setNum)
         }
+
+        setsRecyclerView = findViewById(R.id.setsRecyclerView)
 
         setsRecyclerView.also {
             it.adapter = setsAdapter
@@ -86,11 +99,13 @@ class SetsActivity : BaseActivity(), SetsScreen {
 
     companion object {
         const val EXTRA_SET_LIST_ID = "set_list_id"
+        const val EXTRA_SET_LIST_NAME = "set_list_name"
 
         @JvmStatic
-        fun getStartingIntent(from: Activity, setListId: Long): Intent {
+        fun getStartingIntent(from: Activity, setListId: Long, setListName: String): Intent {
             return Intent(from, SetsActivity::class.java).apply {
                 putExtra(EXTRA_SET_LIST_ID, setListId)
+                putExtra(EXTRA_SET_LIST_NAME, setListName)
             }
         }
     }

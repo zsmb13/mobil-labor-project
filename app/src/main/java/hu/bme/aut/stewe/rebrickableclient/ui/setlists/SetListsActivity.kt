@@ -30,7 +30,7 @@ class SetListsActivity : AppBarActivity(), SetListsScreen {
         injector.inject(this)
 
         setListAdapter = SetListsAdapter(this) { setList ->
-            navigateToSets(setList.id!!)
+            navigateToSets(setList.id!!, setList.name!!)
         }
 
         setListsRecyclerView = findViewById(R.id.setListsRecyclerView)
@@ -67,8 +67,8 @@ class SetListsActivity : AppBarActivity(), SetListsScreen {
         setListAdapter.refreshSetLists(setLists)
     }
 
-    override fun navigateToSets(setListId: Long) {
-        startActivity(SetsActivity.getStartingIntent(this, setListId))
+    override fun navigateToSets(setListId: Long, setListName: String) {
+        startActivity(SetsActivity.getStartingIntent(this, setListId, setListName))
     }
 
     companion object {

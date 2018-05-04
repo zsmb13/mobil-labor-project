@@ -32,7 +32,9 @@ class SetListsPresenter : Presenter<SetListsScreen>() {
 
     private fun onSetListsAvailable(setLists: SetLists) {
         if (setLists.count?.equals(1)!!) {
-            screen?.navigateToSets(setLists.results[0].id!!)
+            with(setLists.results[0]) {
+                screen?.navigateToSets(id!!, name!!)
+            }
         } else {
             screen?.showSetLists(setLists.results)
         }

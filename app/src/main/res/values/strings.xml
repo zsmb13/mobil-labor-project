@@ -13,4 +13,5 @@
 	<string name="cancel">Cancel</string>
 	<string name="add">Add</string>
 	<string name="setlists">Set lists</string>
+	<string name="sets_in_setlist_title_format">Sets in %s</string>
 </resources>

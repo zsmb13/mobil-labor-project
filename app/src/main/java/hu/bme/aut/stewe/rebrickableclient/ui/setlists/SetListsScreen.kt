@@ -7,5 +7,5 @@ import hu.bme.aut.stewe.rebrickableclient.ui.BasicActionsScreen
 interface SetListsScreen : BasicActionsScreen {
     fun showSetLists(setLists: List<SetList>)
 
-    fun navigateToSets(setListId: Long)
+    fun navigateToSets(setListId: Long, setListName: String)
 }
