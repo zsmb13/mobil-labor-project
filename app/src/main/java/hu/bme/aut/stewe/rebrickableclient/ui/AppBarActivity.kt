@@ -1,14 +1,13 @@
 package hu.bme.aut.stewe.rebrickableclient.ui
 
 import android.support.annotation.LayoutRes
-import android.support.annotation.StringRes
 import android.view.ViewGroup
 import hu.bme.aut.stewe.rebrickableclient.R
 
 
 abstract class AppBarActivity : BaseActivity() {
 
-    fun loadViewWithAppBar(@LayoutRes contentLayout: Int, @StringRes activityTitle: Int) {
+    fun loadViewWithAppBar(@LayoutRes contentLayout: Int, activityTitle: String) {
         setContentView(R.layout.activity_appbar)
 
         val contentContainer = findViewById<ViewGroup>(R.id.contentContainer)
@@ -17,7 +16,7 @@ abstract class AppBarActivity : BaseActivity() {
 
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar!!.apply {
-            title = getString(activityTitle)
+            title = activityTitle
             setDisplayHomeAsUpEnabled(true)
         }
     }

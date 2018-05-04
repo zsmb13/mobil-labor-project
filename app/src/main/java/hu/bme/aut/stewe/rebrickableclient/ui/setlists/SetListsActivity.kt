@@ -26,7 +26,7 @@ class SetListsActivity : AppBarActivity(), SetListsScreen {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loadViewWithAppBar(R.layout.activity_setlists, R.string.setlists)
+        loadViewWithAppBar(R.layout.activity_setlists, getString(R.string.setlists))
         injector.inject(this)
 
         setListAdapter = SetListsAdapter(this) { setList ->
