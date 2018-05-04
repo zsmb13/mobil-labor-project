@@ -11,10 +11,10 @@ object InjectorDelegate {
 
     lateinit var context: Context
 
-    private var component: AppComponent? = null
+    private lateinit var component: AppComponent
 
     operator fun getValue(thisRef: Any?, property: KProperty<*>): AppComponent {
-        if (component == null) {
+        if (::component.isInitialized.not()) {
             component = DaggerAppComponent
                     .builder()
                     .uiModule(UIModule(context))
@@ -22,7 +22,7 @@ object InjectorDelegate {
                     .rebrickableApiKey(getRebrickableApiKey())
                     .build()
         }
-        return component!!
+        return component
     }
 
     fun overrideInjector(value: AppComponent) {
