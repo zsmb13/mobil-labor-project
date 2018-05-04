@@ -19,7 +19,7 @@ class SetsAdapter(
     var content = mutableListOf<LegoSet>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SetsViewHolder {
-        val view = parent.inflate(context, R.layout.item_set)
+        val view = parent.inflate(R.layout.item_set)
         return SetsViewHolder(view)
     }
 
