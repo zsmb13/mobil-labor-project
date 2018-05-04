@@ -21,6 +21,10 @@ class LoginActivity : BaseActivity(), LoginScreen {
         setContentView(R.layout.activity_login)
         injector.inject(this)
 
+        val isLogoutRequested = intent.getBooleanExtra(EXTRA_LOGOUT_REQUESTED, false)
+
+        if (isLogoutRequested) presenter.logout()
+
         loginButton.setOnClickListener {
             presenter.login(loginUserName.text.toString(), loginPassword.text.toString())
         }
@@ -42,7 +46,7 @@ class LoginActivity : BaseActivity(), LoginScreen {
     }
 
     override fun navigateToSetLists() {
-        startActivity(SetListsActivity.Companion.getStartingIntent(this))
+        startActivity(SetListsActivity.getStartingIntent(this))
         finish()
     }
 
@@ -52,9 +56,14 @@ class LoginActivity : BaseActivity(), LoginScreen {
     }
 
     companion object {
-        @JvmStatic
-        fun getStartingIntent(from: Activity): Intent {
-            return Intent(from, LoginActivity::class.java)
+        private const val EXTRA_LOGOUT_REQUESTED = "extra_logout_requested"
+
+        fun getStartingIntent(from: Activity, logoutRequested: Boolean = false): Intent {
+            val intent = Intent(from, LoginActivity::class.java)
+            return intent.apply {
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                putExtra(EXTRA_LOGOUT_REQUESTED, logoutRequested)
+            }
         }
     }
 }

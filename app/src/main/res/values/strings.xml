@@ -15,4 +15,5 @@
 	<string name="setlists">Set lists</string>
 	<string name="sets_in_setlist_title_format">Sets in %s</string>
 	<string name="details">Details</string>
+	<string name="logout">Logout</string>
 </resources>

@@ -34,4 +34,8 @@ class LoginPresenter : Presenter<LoginScreen>() {
             is DataSourceException -> screen?.showErrorMessage(result.exception.message!!)
         }
     }
+
+    fun logout() = launchAsync {
+        loginInteractor.deleteUserTokenFromRepository()
+    }
 }
