@@ -12,4 +12,4 @@ class UnbrickableApplication : Application() {
 
 }
 
-var Any?.injector: AppComponent by InjectorDelegate
+val injector: AppComponent by InjectorDelegate

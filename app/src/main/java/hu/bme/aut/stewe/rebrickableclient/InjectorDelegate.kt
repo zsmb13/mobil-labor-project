@@ -8,14 +8,16 @@ import kotlin.reflect.KProperty
 
 @SuppressLint("StaticFieldLeak")
 object InjectorDelegate {
-    var context: Context? = null
+
+    lateinit var context: Context
+
     private var component: AppComponent? = null
 
     operator fun getValue(thisRef: Any?, property: KProperty<*>): AppComponent {
         if (component == null) {
             component = DaggerAppComponent
                     .builder()
-                    .uiModule(UIModule(context!!))
+                    .uiModule(UIModule(context))
                     .rebrickableServiceBaseUrl(getRebrickableServiceBaseUrl())
                     .rebrickableApiKey(getRebrickableApiKey())
                     .build()
@@ -27,11 +29,8 @@ object InjectorDelegate {
         component = value
     }
 
-    operator fun setValue(thisRef: Any?, property: KProperty<*>, value: AppComponent) {
-    }
+    private fun getRebrickableServiceBaseUrl() = context.getString(R.string.rebrickable_base_url)!!
 
-    private fun getRebrickableServiceBaseUrl() = context?.getString(R.string.rebrickable_base_url)!!
-
-    private fun getRebrickableApiKey() = context?.getString(R.string.rebrickable_key)!!
+    private fun getRebrickableApiKey() = context.getString(R.string.rebrickable_key)!!
 
 }
